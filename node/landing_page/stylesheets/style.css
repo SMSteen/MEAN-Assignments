@@ -1,0 +1,97 @@
+.container-fluid{ /* tweak container margins/padding */
+    padding: 25px;
+}
+h1, h2{
+    margin-bottom: 10px;
+    text-align: center;
+    color: #474538;
+}
+h3{
+    text-align: center;
+    color: #474538;
+    margin: 20px 10px 5px 10px;  
+}
+span{
+    font-style: italic;
+    font-weight: bold;
+    color: #474538;
+}
+.home{
+    display: inline-block;
+    margin: 20px;
+    padding: 30px;
+    width: 65%;
+    background: linear-gradient(to bottom, #ada996, #f2f2f2, #dbdbdb, #eaeaea);
+    box-shadow: 3px 3px 6px #252525;
+    color: #474538;
+}
+    .home img{
+        display: block;
+        margin: 20px auto 5px auto;
+        width: 125px;
+    }
+.ninjas{
+    padding: 15px;
+    background: linear-gradient(to bottom, #ada996, #f2f2f2, #dbdbdb, #eaeaea);
+    box-shadow: 3px 3px 6px #252525;
+}
+    .ninjas ul{
+        display: inline-block;
+        width: 48%;
+        margin: 0px auto;
+    }
+    .ninjas li{
+        padding: 5px;
+        font-style: italic;
+    }
+    .ninjas img{
+        vertical-align: top;
+        width: 20%;
+        margin: 25px;
+    }
+    @media screen and (max-width: 479px) {
+        /* start of phone styles */
+        /* It's possible to hide the image if the screen becomes too small */
+        .img-responsive, .ul-responsive{
+            display: block;
+            min-width: 90%;
+        }
+    }
+.register{
+    padding: 20px;
+    width: 60%;
+    min-height: 500px;
+    background-image: url("ninja.jpg");
+    background-size: space;
+    /* background-repeat: no-repeat; */
+}
+form{
+    margin-top: 45px;
+}
+form input{
+    width: 50%;
+    margin: 15px auto;
+    padding: 5px 0px;
+    display: block;
+}
+::placeholder {
+    font-style: italic;
+    opacity: 1; /* Firefox */
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    font-style: italic;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+    font-style: italic;
+}
+input[type='submit']{
+    width: fit-content;
+    padding: 5px 10px;
+    color: #474538;
+    border: 1px solid #474538;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px #252525;
+    margin: 25px auto 0px auto;
+    font-weight: bold;
+    cursor: pointer;
+}
