@@ -1,0 +1,54 @@
+.btn-primary{ /* customize buttons (outside of form submit) */
+    background-color: #476b6b;
+    border-color: #476b6b;
+    box-shadow: 1px 2px 3px #293d3d;
+    margin: 0px 15px;
+}
+.container-fluid{ /* tweak container margins/padding */
+    padding: 25px;
+}
+.jumbotron{
+    background-color: #a3c2c2;
+    border-radius: 10px;
+}
+form h2{
+    text-align: center;
+}
+form{   /* if opting formatting form instead of fieldset/legend */
+    width: 55%;
+    margin: 20px 0px;
+    padding: 20px;
+    background: linear-gradient(to bottom, #85adad, #f2fcfe);
+    box-shadow: 3px 3px 3px #252525;
+}
+input{
+    width: 85%;
+    margin: 15px auto;
+    padding: 5px 0px;
+    display: block;
+}
+::placeholder {
+    font-style: italic;
+    opacity: 1; /* Firefox */
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    font-style: italic;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+    font-style: italic;
+}
+input[type='submit']{
+    width: fit-content;
+    padding: 5px 10px;
+    color: #476b6b;
+    border: 1px solid #476b6b;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px #252525;
+    margin: 25px auto 0px auto;
+    font-weight: bold;
+    cursor: pointer;
+}
+img, figcaption{
+    width: 50%;
+    text-align: center;
+}
