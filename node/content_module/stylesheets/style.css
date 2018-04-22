@@ -1,0 +1,100 @@
+.btn-primary{ /* customize buttons (outside of form submit) */
+    background-color: #476b6b;
+    border-color: #476b6b;
+    box-shadow: 1px 2px 3px #293d3d;
+    margin: 0px 15px;
+}
+.container-fluid{ /* tweak container margins/padding */
+    padding: 25px;
+}
+.jumbotron{
+    background-color: #a3c2c2;
+    border-radius: 10px;
+}
+form h2{
+    text-align: center;
+}
+form{   /* if opting formatting form instead of fieldset/legend */
+    width: 55%;
+    margin: 20px 0px;
+    padding: 20px;
+    background: linear-gradient(to bottom, #85adad, #f2fcfe);
+    box-shadow: 3px 3px 3px #252525;
+}
+input{
+    width: 85%;
+    margin: 15px auto;
+    padding: 5px 0px;
+    display: block;
+}
+::placeholder {
+    font-style: italic;
+    opacity: 1; /* Firefox */
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    font-style: italic;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+    font-style: italic;
+}
+input[type='submit']{
+    width: fit-content;
+    padding: 5px 10px;
+    color: #476b6b;
+    border: 1px solid #476b6b;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px #252525;
+    margin: 25px auto 0px auto;
+    font-weight: bold;
+    cursor: pointer;
+}
+img, figcaption{
+    width: 50%;
+    text-align: center;
+}
+footer{
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: middle;
+    font-style: italic;
+    color: #293d3d;
+}
+.footer-logo{
+    width: 3%;
+}
+.carousel-item.active, .carousel-item-next, .carousel-item-prev {
+  display: block;
+  margin: 0 auto;
+}
+/* Make the image fully responsive */
+.carousel-inner img {
+    width: 85%;
+    height: 85%;
+}
+.img-fluid{
+    width: 95%;
+}
+.row{
+    margin-bottom: 25px;
+}
+.link-holder{
+    width: 85%;
+    padding: 25px;
+}
+.central{
+    width: 90%;
+    height: 500px;
+    background-image: url(catcar1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 25px;
+}
+.central h1{
+    color: white;
+    text-shadow: 3px 2px #476b6b;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 3.5rem;
+    display: inline-block;
+    margin: 20% 30%;
+}
