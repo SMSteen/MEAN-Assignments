@@ -16,8 +16,9 @@ const app = express();
 app.use(express.static(path.join(__dirname, "./static")));
 // user the session module; create secret key for encryption
 app.use(session({
+    name: 'session',
     secret: 'Id0n0tH8mean',
-    resave: true,
+    resave: false,
     saveUninitialized: true,
 }));
 // use the body-parser
