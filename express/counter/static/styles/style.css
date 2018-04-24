@@ -1,0 +1,19 @@
+.container-fluid{ /* tweak container margins/padding */
+    padding: 25px;
+}
+.btn-primary{ /* customize buttons (outside of form submit) */
+    background-color: #476b6b;
+    border-color: #476b6b;
+    box-shadow: 1px 2px 3px #293d3d;
+    margin: 0px 15px;
+}
+footer{
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: middle;
+    font-style: italic;
+    color: #293d3d;
+}
+img.footer-logo{
+    width: 3%;
+}
