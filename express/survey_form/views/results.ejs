@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <title>Dojo Survey Results</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="results">
+            <h2>Submitted Info</h2>
+            <ul>
+                <li>Name:<span class="spacer"><%=name %></span></li>
+                <li>Dojo Location:<span class="spacer"><%=location %></span></li>
+                <li>Favorite Language:<span class="spacer"><%=language %></span></li>
+                <li>Comment:<span class="spacer"><%=comment %></span></li>
+            </ul>
+            <a href="/" class="btn btn-primary">Go Back</a>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <img class="footer-logo" src="images/favicon.ico" alt="logo"><footer>Polly Designs &trade;</footer>
+    </div>
+</body>
+</html>
