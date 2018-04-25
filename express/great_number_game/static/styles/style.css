@@ -1,0 +1,47 @@
+.container-fluid{ /* tweak container margins/padding */
+    padding: 25px;
+}
+h1, h3{
+    padding: 10px;
+    text-align: center;
+}
+h2{
+    margin: 0px auto;
+    padding: 10px;
+    text-align: center;
+}
+form{
+    text-align: center;
+    padding: 10px;
+}
+input{
+    padding: 5px;
+}
+input[type='submit']{
+    margin-left: 5px;
+    padding: 6px 10px;
+    border-radius: 5px;
+    border: 1px solid #004080;
+    font-weight: bold;
+    color: #004080;
+}
+.correct{
+    margin: 10px auto;
+    border: 3px solid #40bf80;
+    color: #40bf80;
+}
+.wrong{
+    margin: 10px auto;
+    border: 3px solid #ff8080;
+    color: #ff8080;
+}
+footer{
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: middle;
+    font-style: italic;
+    color: #000c40;
+}
+img.footer-logo{
+    width: 3%;
+}
