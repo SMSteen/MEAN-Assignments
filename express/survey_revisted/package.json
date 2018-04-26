@@ -1,0 +1,18 @@
+{
+  "name": "survey_revisted",
+  "version": "1.0.0",
+  "description": "Week 3 - Express\r Assignment: Survey Form Revisited\r     For example for this particular app:\r     Have the server render views/index.ejs that has the form for the user to fill out\r     The user fills out the form and submits\r     The form information is EMITTED to the server with the event name \"posting_form\"\r     The server listens for an event 'posting_form' and when this event gets triggered, organizes all the emitted information to form a single message and sends this single message with the event called 'updated_message'. It also EMITs an event called 'random_number' with random number between 1-1000.\r     The client listens for an event called 'random_number' and when this event gets triggered, shows the number in the HTML.\r     The client listens for an event called 'updated_message' and when this event gets triggered, displays the message somewhere in the HTML",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "1.0.0",
+    "express": "~4.10.0",
+    "socket.io": "^2.1.0"
+  }
+}

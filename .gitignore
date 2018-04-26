@@ -1,6 +1,7 @@
 js_fundamentals
 .git
 .vscode
-node_server
-node_module_basics
+node_server/
+node_module_basics/
 hello_express/
+socket_intro/
