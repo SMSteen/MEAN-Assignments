@@ -1,0 +1,39 @@
+.container-fluid{ /* tweak container margins/padding */
+    padding: 25px;
+}
+h1, h4, h5{
+    padding: 10px;
+    text-align: center;
+}
+span{
+    font-size: large;
+    color: #000080;
+    font-size: 125%;
+    vertical-align: text-bottom;
+}
+#count{
+    padding: 20px;
+    display: block;
+    margin: 25px auto;
+    border-radius: 20px;
+    box-shadow: 1px 2px 3px #000080;
+    border: 3px groove #000080;
+    background-color: #e6e6ff;
+    color: #000080;
+    font-weight: bold;
+    font-size: x-large;
+}
+#reset{
+    margin: 50px 0px;
+    margin-left: 75%;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 1px 2px 3px #b30000;
+    border: 3px groove #b30000;
+    background-color: #ffe6e6;
+    color: #b30000;
+    font-weight: bold;
+}
+img.footer-logo{
+    width: 3%;
+}
