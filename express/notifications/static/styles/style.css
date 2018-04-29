@@ -1,0 +1,33 @@
+body{
+    background-color: #303030;
+    color: floralwhite;
+}
+span{
+    margin: 0px 10px;
+    font-weight: bold;
+    color: cornflowerblue;
+}
+button{
+    display: block;
+    margin: 10px auto;
+    width: 25%;
+    border: 10px double cornflowerblue;
+    box-shadow: 0px 0px 0px 5px floralwhite;
+    background-color: floralwhite;
+    color: cornflowerblue;
+    border-radius: 10px;
+    padding: 15px;
+}
+.container-fluid{ /* tweak container margins/padding */
+    padding: 25px;
+}
+.container-fluid.footer{
+    padding: 0;
+}
+footer{
+    display: inline-block;
+}
+img.footer-logo{
+    width: 3%;
+    margin-right: 5px; 
+}
