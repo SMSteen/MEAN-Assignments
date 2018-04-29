@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <title>Paint the Wall</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="welcome">
+            <h1>Paint the wall, for one, for all.</span>.</h1>
+            <h3>What color will it be?</h3>
+            <h2><!--server will populate--></h2>
+        </div>
+        <div class="colors">
+            <button class="gray" data-color-value="#586203">AuroMetalSaurus</button>
+            <button class="red" data-color-value="#FF3800">Coquelicot</button>
+            <button class="blue" data-color-value="#6082B6">Glaucous</button>
+            <button class="pink" data-color-value="#E79FC4">Kobi</button>
+            <button class="green" data-color-value="#6D9A79">Oxley</button>
+            <button class="purple" data-color-value="#86608E">Pomp and Power</button>
+        </div>
+    </div>
+    <div class="container-fluid footer">
+        <img class="footer-logo" src="images/favicon.ico" alt="logo"><footer>Polly Designs &trade;</footer>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+<script src="/scripts/script.js"></script>
+</html>

@@ -1,0 +1,33 @@
+body{
+    background-color: #303030;
+    color: white;
+}
+h1, h2, h3{
+    margin: 10px;
+    text-align: center;
+}
+.colors{
+    padding: 15px;
+}
+button{
+    display: block;
+    margin: 10px auto;
+    width: 25%;
+    height: 50px;
+    background-color: antiquewhite;
+    color: black;
+    border-radius: 10px;
+}
+.container-fluid{ /* tweak container margins/padding */
+    padding: 25px;
+}
+.container-fluid.footer{
+    padding: 0;
+}
+footer{
+    display: inline-block;
+}
+img.footer-logo{
+    width: 3%;
+    margin-right: 5px; 
+}

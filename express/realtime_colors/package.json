@@ -1,0 +1,18 @@
+{
+  "name": "realtime_colors",
+  "version": "1.0.0",
+  "description": "Week 3 - Express\r Real-Time Colors\r Create a socket application that presents the user with 3 buttons for color options. When a user clicks on one of the color options, all currently connected socket users should have their entire background change to that color.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Polly Designs",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.5.9",
+    "express": "^4.16.3",
+    "socket.io": "^2.1.0"
+  }
+}
