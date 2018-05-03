@@ -1,0 +1,70 @@
+.container-fluid{ /* tweak container margins/padding */
+    padding: 25px;
+}
+form{
+    width: 50%;
+    margin: 25px auto;
+    padding: 25px;
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    background: linear-gradient(to bottom, #000c40, #f0f2f0);
+    box-shadow: 3px 3px 3px #252525;
+}
+form label{
+    text-align: left;
+    grid-column: 1 / 2;
+    color: #f0f2f0;
+}
+textarea{
+    margin: 5px 0px;
+    width: 100%;
+    font-style: italic;
+    font-weight: bold;
+    color: #000c40; 
+}
+form label, input, textarea{
+    margin: 10px 0px;
+}
+.btn-primary{ /* customize buttons (outside of form submit) */
+    background-color: buttonface;
+    border-radius: 10px;
+    color: #000c40;
+    border-color: #000c40;
+    box-shadow: 1px 2px 3px #000c40;
+    font-weight: bold;
+    grid-column: 1/3;
+    width: fit-content;
+    margin: 10px auto;
+}
+.text-danger{
+    text-align: center;
+}
+.quotes{
+    width: 70%;
+    padding: 10px;
+}
+.quotes p{
+    margin: 0px;
+    padding: 0px;
+}
+.quote{
+    margin: 10px 0px;
+    box-shadow: 0px 1px 2px 3px #002966;
+    padding: 15px;
+}
+.author{
+    padding: 0px;
+    text-align: right;
+    color: #0052cc;
+    font-style: italic;
+}
+.container-fluid.footer{
+    padding: 0 10px;
+}
+footer{
+    display: inline-block;
+}
+img.footer-logo{
+    width: 3%;
+    margin-right: 5px; 
+}

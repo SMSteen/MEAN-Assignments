@@ -5,3 +5,5 @@ node_server/
 node_module_basics/
 hello_express/
 socket_intro/
+intro_MongoDB/
+basic_mongoose_app/

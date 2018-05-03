@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <title>Quoting Dojo</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <h1>Awesome quotes from the Dojo!</h1>
+        <div class="quotes">
+            <!-- this will be populated by server -->
+            <% for (quote of quotes) { %>
+                <div class="quote">
+                    <p>"<%=quote.quote %>"</p>
+                    <p class="author">-<%=quote.name %> at <%=moment(quote.createdAt).format('h:mm a MMMM D, YYYY')%></p>
+                </div>
+            <% } %>
+        </div>
+        <a class="btn btn-primary" href="/">Add a Quote!</a>
+    </div>
+    <div class="container-fluid footer">
+        <img class="footer-logo" src="images/favicon.ico" alt="logo"><footer>Polly Designs &trade;</footer>
+    </div>
+</body>
+</html>
