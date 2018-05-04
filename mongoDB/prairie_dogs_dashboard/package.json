@@ -1,0 +1,19 @@
+{
+  "name": "prairie_dogs_dashboard",
+  "version": "1.0.0",
+  "description": "Week 4 - MongoDB\r Assignment: Mongoose Dashboard\r Utilize all 4 CRUD methods with Mongoose. Build an app which manages a pack of some kind of animal (think otter, rabbit, or owl). You need to be able to add a new animal, update it, and delete it. You should use the following routes to build this app (don't use acutally mongooses)\r     GET '/' Displays all of the mongooses.\r     GET '/mongooses/:id' Displays information about one mongoose.\r     GET '/mongooses/new' Displays a form for making a new mongoose.\r     POST '/mongooses' Should be the action attribute for the form in the above route (GET '/mongooses/new').\r     GET '/mongooses/edit/:id' Should show a form to edit an existing mongoose.\r     POST '/mongooses/:id' Should be the action attribute for the form in the above route (GET '/mongooses/edit/:id').\r     POST '/mongooses/destroy/:id' Should delete the mongoose from the database by ID.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.9",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.17"
+  }
+}

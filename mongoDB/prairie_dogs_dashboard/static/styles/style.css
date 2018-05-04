@@ -1,0 +1,49 @@
+.container-fluid{ /* tweak container margins/padding */
+    padding: 25px;
+}
+.jumbotron{
+    background-color: #a3c2c2;
+    border-radius: 10px;
+}
+h1, h2, h3{
+    margin: 10px;
+    text-align: center;
+    color: #532e13;
+}
+form{
+    width: 55%;
+    margin: 25px auto;
+    padding: 25px;
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    background: linear-gradient(to bottom, #de9c6e, #e7b997, #edc9af, #f3e7d8);
+    box-shadow: 3px 3px 3px #532e13;
+}
+form label{
+    text-align: left;
+    grid-column: 1 / 2;
+}
+form label, input{
+    margin: 10px 0px;
+}
+.btn-primary{ /* customize buttons (outside of form submit) */
+    background-color: buttonface;
+    border-radius: 10px;
+    color: #532e13;
+    border-color: #532e13;
+    box-shadow: 1px 2px 3px #532e13;
+    font-weight: bold;
+    grid-column: 2/3;
+    width: fit-content;
+    margin: 15px auto 0px auto;
+}
+.container-fluid.footer{
+    padding: 0 5px;
+}
+footer{
+    display: inline-block;
+}
+img.footer-logo{
+    width: 3%;
+    margin-right: 5px; 
+}
