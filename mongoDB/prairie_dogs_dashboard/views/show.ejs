@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <title>All About Prairie Dogs</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="dogs">
+            <% if (dog._id == '5aebb5fc2b6c900b2c377d40') { %>  <!-- show Hank's pic -->
+                <img class="img-thumbnail" src="/images/blacktailedpd.jpg" alt="<%=dog.kind%>">
+            <% } else if (dog._id == '5aeca77f423ac913f072272a') { %> <!-- show Curious George's pic -->
+                <img class="img-thumbnail" src="/images/whitetailedpd.jpg" alt="<%=dog.kind%>">
+            <% } else if (dog._id == '5aeca8af0ed4740670e133d1') { %> <!-- show Samsonite's pic -->
+            <img class="img-thumbnail" src="/images/mexicanpd.jpg" alt="<%=dog.kind%>">
+            <% } else if (dog._id == '5aecae0aee495c3730d8aa6a') { %> <!-- show Sptiz's pic -->
+                <img class="img-thumbnail" src="/images/utahpd.jpg" alt="<%=dog.kind%>">
+            <% } else if (dog._id == '5aecae59ee495c3730d8aa6b') { %> <!-- show Charlemagne's pic -->
+                <img class="img-thumbnail" src="/images/gunnisonspd.jpg" alt="<%=dog.kind%>">
+            <% } %>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><%=dog.name.toUpperCase()%></h5>
+                    <p class="card-text">
+                        <%=dog.name%> is a <%=dog.kind%> prairie dog.
+                        <% if (dog.gender == 'M') { %>
+                            He
+                        <% } else { %>
+                            She
+                        <% } %>
+                        <% if (dog.weight > 3) { %>
+                            is a hefty one topping out at around
+                        <% } else { %>
+                            weighs about
+                        <% } %>
+                        <%=dog.weight%> pounds.
+                        <%=dog.personality%>
+                    </p>
+                    <a class="float-left" href="/prairiedogs/edit/<%=dog._id%>">Edit</a>
+                    <a class="float-center" href="/">Back</a>
+                    <a class="float-right" href="/prairiedogs/destroy/<%=dog._id%>">Delete</a>
+                </div>
+                <a href="/prairiedogs/new" id="card-btn" class="btn btn-primary">Tell us about your<br>fun loving prairie dog!</a>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid footer">
+        <img class="footer-logo" src="/images/favicon.ico" alt="logo"><footer>Polly Designs &trade;</footer>
+    </div>
+</body>
+</html>

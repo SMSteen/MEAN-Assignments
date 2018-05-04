@@ -27,7 +27,7 @@ const prairiedogSchema = new mongoose.Schema({
         minlength: [2, "Don't be bashful. Nicknames are ok, but the name entered must be at least 2 characters."], 
         trim: true,
     },
-    sex: {
+    gender: {
         type: String,
     },
     weight: {
@@ -51,24 +51,25 @@ mongoose.model("PrairieDog", prairiedogSchema);
 const PrairieDog = mongoose.model("PrairieDog");
 
 // Routes
-// Root Request - render index
+// Root Request - render index, show all prairiedogs
 app.get('/', function(request, response) {
     PrairieDog.find({})
         .then(prairiedogs => {
-            console.log(prairiedogs)
+            console.log(prairiedogs);
             response.render('index', {prairiedogs: prairiedogs});
         })
         .catch(error => {
-            console.log(error)
+            console.log(error);
         })
 })
-// New
-app.get('/prairiedogs/new', function(request, response){
-    response.render('new')
+// New - render form to add new prairiedog
+app.get('/prairiedogs/new', function(request, response) {
+    response.render('new');
 })
-app.post('/prairiedogs/new', function(request, response){
+// New - post new prairiedog to database
+app.post('/prairiedogs/new', function(request, response) {
     console.log("POST DATA", request.body);
-    // create a new quote
+    // create a new prairiedog
     const prairiedog = new PrairieDog({
         name: request.body.name,
         gender: request.body.gender,
@@ -79,7 +80,7 @@ app.post('/prairiedogs/new', function(request, response){
     prairiedog.save()
         .then(prairiedog => {
             console.log('successfully added a prairie dog', prairiedog)
-            let id = prairiedog._id
+            let id = prairiedog._id;
             // redirect to prairiedog id page
             response.redirect('/prairiedogs/'+id)
         })
@@ -88,43 +89,63 @@ app.post('/prairiedogs/new', function(request, response){
             const errors = Object.keys(error.errors).map(key => {
                 return error.errors[key].message;
             });
-            //render index with errors
-            response.render('new', {errors: errors})
+            //render new with errors
+            response.render('new', {errors: errors});
         })
 })
-// // Add User Request 
-// app.post('/quotes', function(request, response) {
-//     console.log("POST DATA", request.body);
-//     // create a new quote
-//     const quote = new Quote({
-//         name: request.body.name,
-//         quote: request.body.quote
-//     });
-//     //save the quote as a promise
-//     quote.save()
-//         .then(quote => {
-//             console.log('successfully added a quote', quote)
-//             //redirect to quotes page
-//             response.redirect('/quotes')
-//         })
-//         .catch(error => {
-//             //capture and save error, render to page
-//             const errors = Object.keys(error.errors).map(key => {
-//                 return error.errors[key].message;
-//             });
-//             //render index with errors
-//             response.render('index', {errors: errors})
-//         });
-//     })
-// app.get('/quotes', function(request, response){
-//     Quote.find({}).sort({createdAt: -1})
-//         .then(quotes => {
-//             response.render('quotes', {quotes, moment});
-//         })
-//         .catch(error => {
-//             console.log(error)
-//         })
-// })
+// Show a prairie dog
+app.get('/prairiedogs/:id', function(request, response) {
+    let id = request.params.id;
+    PrairieDog.findById(id)
+        .then(dog => {
+            console.log(dog);
+            response.render('show', {dog: dog});
+        })
+        .catch(error => {
+            console.log(error);
+        })
+})
+// Edit - render form to edit a prairiedog
+app.get('/prairiedogs/edit/:id', function(request, response) {
+    let id = request.params.id;
+    PrairieDog.findById(id)
+        .then(dog => {
+            console.log(dog);
+            response.render('edit', {dog: dog});
+        })
+        .catch(error => {
+            //capture and save error, render to page
+            const errors = Object.keys(error.errors).map(key => {
+                return error.errors[key].message;
+            });
+            //render new with errors
+            response.render('edit', {errors: errors});
+        })
+})
+// Edit - post changes to prairiedog to database
+app.post('/prairiedogs/edit/:id', function(request, response){
+    let id = request.params.id;
+    PrairieDog.findByIdAndUpdate(id, request.body, {new: true})
+        .then(dog => {
+            console.log(dog);
+            response.redirect('/prairiedogs/'+id);
+        })
+        .catch(error => {
+            console.log(error);
+        })
+})
+// Destroy a prairiedog
+app.get('/prairiedogs/destroy/:id', function(request, response){
+    let id = request.params.id;
+    PrairieDog.findByIdAndRemove(id)
+        .then(dog => {
+            console.log('sucessfully removed prairie dog', id);
+            response.redirect('/');
+        })
+        .catch(error => {
+            console.log(error);
+        })
+})
 // Setting our Server to Listen on Port: 8000
 app.listen(8000, function() {
     console.log("listening on port 8000");

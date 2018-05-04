@@ -2,13 +2,18 @@
     padding: 25px;
 }
 .jumbotron{
-    background-color: #a3c2c2;
+    background: linear-gradient(to bottom, #de9c6e, #e7b997, #edc9af, #f3e7d8);
     border-radius: 10px;
+    padding: 2rem 2rem;
+    margin-bottom: 1rem
+
 }
 h1, h2, h3{
+    color: #532e13;
+}
+h2, h3{
     margin: 10px;
     text-align: center;
-    color: #532e13;
 }
 form{
     width: 55%;
@@ -33,12 +38,45 @@ form label, input{
     border-color: #532e13;
     box-shadow: 1px 2px 3px #532e13;
     font-weight: bold;
-    grid-column: 2/3;
     width: fit-content;
+    display: block;
+    margin: 25px auto;
+}
+form button{
     margin: 15px auto 0px auto;
+    grid-column: 2/3;
+}
+.text-danger{
+    text-align: center;
+    font-weight: bold;
+}
+ul li {
+    list-style: none;
+    text-align: center;
+}
+.img-thumbnail{
+    width: 40%;
+    margin: 10px;
+    border-color: #532e13;
+}
+.card {
+    display: inline-block;
+    width: 50%;
+    padding: 25px;
+    vertical-align: middle;
+    border-color: #532e13;
+}
+#card-btn{
+    margin: 25px auto 0 auto;
+}
+#btn-jumbo{
+    margin: 0;
+}
+.float-center{
+    margin-left: 40%;
 }
 .container-fluid.footer{
-    padding: 0 5px;
+    padding: 0 10px;
 }
 footer{
     display: inline-block;
