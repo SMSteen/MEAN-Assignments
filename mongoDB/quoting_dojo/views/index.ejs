@@ -14,7 +14,7 @@
     <div class="container-fluid">
         <h1>Welcome to Quoting Dojo</h1>
         <div class="errors">
-            <%if (typeof errors == 'object' && errors) { %>
+            <%if (typeof errors !== 'undefined') { %>
                 <% for (const error of errors) { %>
                     <p class="text-danger"><%= error %></p>
                 <% } %>
