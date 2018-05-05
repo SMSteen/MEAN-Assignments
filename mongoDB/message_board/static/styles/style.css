@@ -1,0 +1,77 @@
+.container-fluid{ /* tweak container margins/padding */
+    padding: 25px;
+}
+h1{
+    margin-bottom: 20px;
+    border-bottom: 1px dotted #252525;
+    width: 75%;
+}
+fieldset {
+    border: 1px groove #000c40 !important;
+    padding: 0 1em 0.4em 1em !important;
+    margin: 0 0 1.5em 0 !important;
+    -webkit-box-shadow:  0px 0px 0px 0px #000c40;
+            box-shadow:  0px 0px 0px 0px #000c40;
+}
+legend{
+    width:inherit; /* Or auto */
+    padding:0 10px; /* To give a bit of padding on the left and right */
+    border-bottom:none;
+}
+.messages form{
+    width: 70%;
+}
+.message form, .comments{
+    width: 60%;
+    margin-left: 5%;
+}
+::placeholder {
+    padding: 0 5px;
+    font-weight: normal;
+    font-style: italic;
+    opacity: 1; /* Firefox */
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    padding: 0 5px;
+    font-weight: normal;
+    font-style: italic;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+    padding: 0 5px;
+    font-weight: normal;
+    font-style: italic;
+}
+textarea{
+    margin-top: 5px;
+    width: 100%;
+}
+.btn-primary{ /* customize buttons (outside of form submit) */
+    background-color: buttonface;
+    border-radius: 10px;
+    color: #000c40;
+    border-color: #000c40;
+    box-shadow: 1px 2px 3px #000c40;
+    font-weight: bold;
+    margin: 5px;
+    cursor: pointer;
+}
+p, h3, h5{
+    margin: 0;
+}
+h3, h5{
+    font-style: italic;
+    color: #000c40;
+}
+h5{
+    margin-top: 5px;
+}
+.container-fluid.footer{
+    padding: 0 10px;
+}
+footer{
+    display: inline-block;
+}
+img.footer-logo{
+    width: 3%;
+    margin-right: 5px; 
+}

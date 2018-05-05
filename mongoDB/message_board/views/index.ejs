@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <title>Dojo Message Board</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <h1>The Dojo Message Board</h1>
+        <div class="errors">
+            <%if (typeof errors !== 'undefined') { %>
+                <% for (const error of errors) { %>
+                    <p class="text-danger"><%= error %></p>
+                <% } %>
+            <% } %>
+        </div>
+        <div class="messages">
+            <form action="/message" method="POST">
+                <fieldset>
+                    <legend>Add a Message</legend>
+                    <input type="text" name="name" placeholder="Your name">
+                    <textarea name="message" cols="15" rows="2" placeholder="What's your message?"></textarea>
+                    <input class="btn btn-primary float-right" id="msg-btn" type="submit" value="Post Message">
+                </fieldset>
+            </form>
+            <!-- will be populated by server -->
+            <% if (typeof messages !== 'undefined') { %>
+                <% for (const message of messages) { %>
+                    <div class="message">
+                        <h3><%=message.name%></h3>
+                        <p><%=message.message%></p>
+                        <% for (const comment of message.comments) { %>
+                            <div class="comments">
+                                <h5><%=comment.name%></h5>
+                                <p><%=comment.comment%></p>
+                            </div>
+                        <% } %>
+                            <form action="/message/<%=message._id%>" method="POST">
+                                <fieldset>
+                                    <legend>Add a Comment</legend>
+                                    <input type="text" name="name" placeholder="Your name">
+                                    <textarea name="comment" cols="15" rows="2" placeholder="Care to comment?"></textarea>
+                                    <input class="btn btn-primary float-right" id="cmt-btn" type="submit" value="Post Comment">
+                                </fieldset>
+                            </form>
+                    </div>
+                <% } %>
+            <% } %>
+        </div>
+    </div>
+    <div class="container-fluid footer">
+        <img class="footer-logo" src="images/favicon.ico" alt="logo"><footer>Polly Designs &trade;</footer>
+    </div>
+</body>
+</html>
