@@ -1,0 +1,22 @@
+{
+  "name": "login_registration",
+  "version": "1.0.0",
+  "description": "Week 4 - MongoDB\r Assignment: Login and Registration\r Create a login and registration that uses back-end validation, catches errors, and displays them to the client.\r Required Registration Fields:\r     email\r     first_name\r     last_name\r     password\r     birthday\r Each registration field should have at least one back-end validation on it!\r Emails should be unique and valid emails.\r The login form should just have fields for password and email.\r After you have successfully passed back any error messages to the user, implement mongoose validations.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Polly Designs",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^2.0.1",
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.9",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "moment": "^2.22.1",
+    "mongoose": "^5.0.17"
+  }
+}
