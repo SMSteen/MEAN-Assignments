@@ -26,9 +26,9 @@ moment().format();
 // Require path
 const path = require('path');
 // Setting our Static Folder Directory
-app.use(express.static(path.join(__dirname, './static')));
+app.use(express.static(path.join(__dirname, './client/static')));
 // Setting our Views Folder Directory
-app.set('views', path.join(__dirname, './views'));
+app.set('views', path.join(__dirname, './client/views'));
 // Setting our View Engine set to EJS
 app.set('view engine', 'ejs');
 // Require mongoose
@@ -58,44 +58,10 @@ mongoose.model("Quote", quoteSchema);
 // Retrieve the Schema from our Models named Quote
 const Quote = mongoose.model("Quote");
 
-// Routes
-// Root Request - render index
-app.get('/', function(request, response) {
-    response.render('index')
-})
-// Add User Request 
-app.post('/quotes', function(request, response) {
-    console.log("POST DATA", request.body);
-    // create a new quote
-    const quote = new Quote({
-        name: request.body.name,
-        quote: request.body.quote
-    });
-    //save the quote as a promise
-    quote.save()
-        .then(quote => {
-            console.log('successfully added a quote', quote)
-            //redirect to quotes page
-            response.redirect('/quotes')
-        })
-        .catch(error => {
-            //capture and save error, render to page
-            const errors = Object.keys(error.errors).map(key => {
-                return error.errors[key].message;
-            });
-            //render index with errors
-            response.render('index', {errors: errors})
-        });
-    })
-app.get('/quotes', function(request, response){
-    Quote.find({}).sort({createdAt: -1})
-        .then(quotes => {
-            response.render('quotes', {quotes, moment});
-        })
-        .catch(error => {
-            console.log(error)
-        })
-})
+// require routes.js file for all routing
+// invoke as a function and pass app to our routes file
+require('./server/config/routes.js')(app)
+
 // Setting our Server to Listen on Port: 8000
 app.listen(8000, function() {
     console.log("listening on port 8000");
