@@ -1,8 +1,5 @@
 // Require mongoose
 const mongoose = require('mongoose');
-// Connect to mongodb using mongoose
-mongoose.connect('mongodb://localhost/basic_mongoose')
-
 // Create a Quote Model with Schema (blueprint)
 const quoteSchema = new mongoose.Schema({
     name: {
