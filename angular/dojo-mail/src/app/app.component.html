@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <h1>{{ title }}</h1>
+  <table class="table table-striped table-bordered">
+    <thead>
+        <td>Email</td>
+        <td>Importance</td>
+        <td>Subject</td>
+        <td>Content</td>
+    </thead>
+    <tbody>
+      <tr *ngFor='let email of myEmails'>
+        <td>{{ email.email | lowercase }}</td>
+        <td>{{ email.importance | importanceLevel }}</td>
+        <td>{{ email.subject }}</td>
+        <td>{{ email.content }}</td>
+      </tr>
+    </tbody>
+  </table>    
+  <div class="container-fluid footer">
+      <img class="footer-logo" src="favicon.ico" alt="logo"><footer>Polly Designs &trade;</footer>
+  </div>
+</div>

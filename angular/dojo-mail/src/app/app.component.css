@@ -1,0 +1,19 @@
+.container-fluid{ /* tweak container margins/padding */
+    padding: 25px;
+}
+thead td{
+    font-weight: bold;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(52, 58, 92, 0.2);
+}
+.container-fluid.footer{
+    padding: 0 10px;
+}
+footer{
+    display: inline-block;
+}
+img.footer-logo{
+    width: 3%;
+    margin-right: 5px; 
+}
