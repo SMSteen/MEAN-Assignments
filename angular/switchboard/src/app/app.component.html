@@ -1,0 +1,8 @@
+<div class="container-fluid">
+  <h1>{{ title }}!</h1>
+  <div class="button-row">
+    <button *ngFor='let state of states; let idx = index' (click)="onButtonClick(idx)" class="{{ state | lowercase }}">
+        {{ state }}
+    </button>    
+  </div>
+</div>
