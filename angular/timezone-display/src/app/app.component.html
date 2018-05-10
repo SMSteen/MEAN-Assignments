@@ -1,0 +1,11 @@
+<div class="container-fluid">
+  <h1>US Time Zone Display</h1>
+  <div class="tz-buttons">
+    <button (click)="onButtonClick($event)" [ngClass]="{'tz-selected':statusPST}">PST</button>
+    <button (click)="onButtonClick($event)" [ngClass]="{'tz-selected':statusMST}">MST</button>
+    <button (click)="onButtonClick($event)" [ngClass]="{'tz-selected':statusCST}">CST</button>
+    <button (click)="onButtonClick($event)" [ngClass]="{'tz-selected':statusEST}">EST</button>
+    <button (click)="onButtonClick($event)">Clear</button>
+  </div>
+  <h3>{{theDate | date: 'medium' :timeZone}}</h3>
+</div>

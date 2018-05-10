@@ -1,0 +1,21 @@
+.container-fluid{ /* tweak container margins/padding */
+    padding: 25px;
+}
+h1, h3, .tz-buttons {
+    text-align: center;
+}
+button {
+    width: fit-content;
+    padding: 10px;
+    margin: 25px;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 1px 2px 3px #808080;
+    background-color: black;
+    color: white;
+}
+.tz-selected {
+    background-color: yellow;
+    border: 1px solid #252525;
+    color: black;
+}
