@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Registration</title>
+  <base href="/">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+</head>
+<body>
+  <app-root></app-root>
+  <div class="container-fluid footer">
+    <img class="footer-logo" src="favicon.ico" alt="logo"><footer>Polly Designs &trade;</footer>
+  </div>
+</body>
+</html>
+<script>
+    $(document).ready(function(){
+      $('#pwConf').blur(function(event){
+
+        //ensure passwords match before submitting form
+        if ($('#pwConf').val() === $('#password').val()) { //passwords do match, clean out any prior error messages & submit form
+            $('.pwError').html("");
+            return;
+        } else { 
+            $('.pwError').append(`<p><strong class="text-danger">The passwords you entered do not match. Please try again.</strong></p>`);
+        }
+      })
+    })
+</script>

@@ -1,0 +1,188 @@
+<div class="container-fluid">
+  <h1>Registration</h1>
+  <div class="text-success">
+    <p *ngIf="newUser">Thank you for registering with us {{newUser.firstName}}. We have sent a confirmation email to {{newUser.email}} and we will send all written correspondence to {{newUser.address}} {{newUser.city}} {{newUser.state}}. Thank you again for registering and have a great day!</p>
+  </div>
+  <form (submit)="onSubmit($event, form)" #form='ngForm'>
+    <p class="text-muted"><span>*</span> Denotes Required Field</p>
+    <label for="firstName"><span>*</span>First Name:</label>
+    <input
+      type="text"
+      name="firstName"
+      required
+      minlength="2"
+      maxlength="25"
+      [(ngModel)]="user.firstName"
+      #firstName='ngModel'
+      [ngModelOptions]="{updateOn: 'blur'}"
+    >
+    <p *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="text-danger">
+      Please enter your first name.
+    </p>
+
+    <label for="lastName"><span>*</span>Last Name:</label>
+    <input
+      type="text"
+      name="lastName"
+      required
+      minlength="2"
+      maxlength="25"
+      [(ngModel)]="user.lastName"
+      #lastName='ngModel'
+      [ngModelOptions]="{updateOn: 'blur'}"
+    >
+    <p *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="text-danger">
+      Please enter your last name.
+    </p>
+
+    <label for="email"><span>*</span>Email:</label>
+    <input
+      type="text"
+      name="email"
+      required
+      minlength="10"
+      pattern="[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$"
+      [(ngModel)]="user.email"
+      #email='ngModel'
+      [ngModelOptions]="{updateOn: 'blur'}"
+    >
+    <p *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+      Please enter a valid email address.
+    </p>
+
+    <label for="password"><span>*</span>Password:</label>
+    <input
+      class="tooltip"
+      data-toggle="tooltip" 
+      data-placement="right"
+      title="Password must be at least 8 characters, include one Uppercase letter and one number."
+      type="password"
+      name="password"
+      id="password"
+      required
+      minlength="8"
+      pattern="(?=.*[A-Z])(?=.*\d)[a-zA-Z\d@!#&$]{8,}$"
+      [(ngModel)]="user.password"
+      #password='ngModel'
+      [ngModelOptions]="{updateOn: 'blur'}"
+    >
+    <p *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+      Please enter a valid password. Password must be at least 8 characters, include one uppercase letter and one number. Symbols other than @, !, #, &, $ are not allowed.
+    </p>
+
+    <label for="pwConf"><span>*</span>Confirm Password:</label>
+    <input
+      type="password"
+      name="pwConf"
+      id="pwConf"
+      required
+      minlength="8"
+      >
+    <p class="pwError text-danger"></p> <!--this will be populated by jQuery front end validation-->
+
+    <label for="address"><span>*</span>Street Address:</label>
+    <input
+      type="text"
+      name="address"
+      required
+      minlength="5"
+      [(ngModel)]="user.address"
+      #address='ngModel'
+      [ngModelOptions]="{updateOn: 'blur'}"
+    >
+    <p *ngIf="address.invalid && (address.dirty || address.touched)" class="text-danger">
+      Please enter your address.
+    </p>
+
+    <label for="address2">Unit/Apt #:</label>
+    <input
+      type="text"
+      name="address2"
+      [(ngModel)]="user.address2"
+      #address2='ngModel'
+    >
+
+    <label for="city"><span>*</span>City:</label>
+    <input
+      required
+      type="text"
+      name="city"
+      [(ngModel)]="user.city"
+      #city='ngModel'
+    >
+    <p *ngIf="city.invalid && (city.dirty || city.touched)" class="text-danger">
+      Please enter your city.
+    </p>
+
+    <label for="state"><span>*</span>State:</label>
+    <select name="state" required [(ngModel)]="user.state" #state='ngModel'>
+        <option value='Not_Selected' selected></option>
+        <option value='AL'>AL</option>
+        <option value='AK'>AK</option>
+        <option value='AZ'>AZ</option>
+        <option value='AR'>AR</option>
+        <option value='CA'>CA</option>
+        <option value='CO'>CO</option>
+        <option value='CT'>CT</option>
+        <option value='DC'>DC</option>
+        <option value='DE'>DE</option>
+        <option value='FL'>FL</option>
+        <option value='GA'>GA</option>
+        <option value='HI'>HI</option>
+        <option value='ID'>ID</option>
+        <option value='IL'>IL</option>
+        <option value='IN'>IN</option>
+        <option value='IA'>IA</option>
+        <option value='KS'>KS</option>
+        <option value='KY'>KY</option>
+        <option value='LA'>LA</option>
+        <option value='ME'>ME</option>
+        <option value='MD'>MD</option>
+        <option value='MA'>MA</option>
+        <option value='MI'>MI</option>
+        <option value='MN'>MN</option>
+        <option value='MS'>MS</option>
+        <option value='MO'>MO</option>
+        <option value='MT'>MT</option>
+        <option value='NE'>NE</option>
+        <option value='NV'>NV</option>
+        <option value='NH'>NH</option>
+        <option value='NJ'>NJ</option>
+        <option value='NM'>NM</option>
+        <option value='NY'>NY</option>
+        <option value='NC'>NC</option>
+        <option value='ND'>ND</option>
+        <option value='OH'>OH</option>
+        <option value='OK'>OK</option>
+        <option value='OR'>OR</option>
+        <option value='PA'>PA</option>
+        <option value='RI'>RI</option>
+        <option value='SC'>SC</option>
+        <option value='SD'>SD</option>
+        <option value='TN'>TN</option>
+        <option value='TX'>TX</option>
+        <option value='UT'>UT</option>
+        <option value='VT'>VT</option>
+        <option value='VA'>VA</option>
+        <option value='WA'>WA</option>
+        <option value='WV'>WV</option>
+        <option value='WI'>WI</option>
+        <option value='WY'>WY</option>
+    </select>
+    <p *ngIf="(state.invalid || state.value === 'Not_Selected') && (state.dirty || state.touched)" class="text-danger">
+      Please select your state.
+    </p>
+
+    <fieldset>
+      <label for="lucky"><span>*</span>I'm feeling lucky:</label>
+      <input type="radio" name="lucky" value='true' required="!lucky" [(ngModel)]="user.lucky" #lucky='ngModel'><label for="lucky">Yes</label>
+      <input type="radio" name="lucky" value='false' required="!lucky" [(ngModel)]="user.lucky" #lucky='ngModel'><label for="lucky">No</label>
+      <p *ngIf="lucky.invalid && (lucky.dirty || lucky.untouched)" class="text-danger">
+        Are you feeling lucky? Please submit your answer.
+      </p>
+    </fieldset>
+
+    <button type="submit" *ngIf="!form.valid" disabled>Submit</button>
+    <button type="submit" *ngIf="form.valid">Submit</button>
+  </form>
+</div>
