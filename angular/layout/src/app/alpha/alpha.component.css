@@ -1,0 +1,11 @@
+.container{
+    width: 45%;
+    display: inline-block;
+    margin: 5px;
+    padding: 5px;
+    border: 3px dotted #009999;
+    vertical-align: top;
+}
+h2{
+    color: #009999;
+}
