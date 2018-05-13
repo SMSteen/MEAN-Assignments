@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <h1>Add a Quote</h1>
+  <form (submit)="onSubmit($event, form)" #form="ngForm">
+    <textarea
+      name="quote"
+      cols="50"
+      rows="4"
+      placeholder="Add your quote here..."
+      minlength="4"
+      required
+      [(ngModel)]="newQuote.quote"
+      #quote="ngModel"
+      [ngModelOptions]="{updateOn: 'blur'}">
+    </textarea>
+    <p *ngIf="quote.invalid && (quote.dirty || quote.touched)" class="text-danger">
+      Oops. You forgot to enter your quote!
+    </p>
+
+    <label for="author">By:
+      <input
+        type="text"
+        name="author"
+        placeholder="Author"
+        minlength="1"
+        required
+        [(ngModel)]="newQuote.author"
+        #author="ngModel"
+      >
+    </label>
+    <p *ngIf="author.invalid && (author.dirty || author.touched)" class="text-danger">
+      Oops, you forgot the best part! Tell us who this quote is by.
+    </p>
+
+    <button type="submit" *ngIf="!form.valid" disabled>Add Quote</button>
+    <button type="submit" *ngIf="form.valid">Add Quote</button>
+
+  </form>
+</div>
+<app-quotes [quotes]='quotes' (aTaskEventEmitter)="rankUpdate($event)"></app-quotes>
