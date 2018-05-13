@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <fieldset>
+    <legend>PowerComponent</legend>
+    <p *ngIf="error" class="text-danger">
+        Please select a Power Level between 1 and 100.
+    </p>
+    <form (submit)="onSubmit($event, form)" name="powerForm" #form='ngForm'>
+      <label for="powerLevel">Initial Power Level:</label>
+      <input name="powerLevel" type="number" min="1" max="100" [ngModel]='intialPower' required>
+      <input type="submit" value="Calculate Powers">
+    </form>
+    <div class="container-fluid">
+      <app-human [initialPower]='intialPower'></app-human>
+      <app-griffin [initialPower]='intialPower'></app-griffin>
+      <app-qilin [initialPower]='intialPower'></app-qilin>
+      <app-naga [initialPower]='intialPower'></app-naga>
+      <app-manticore [initialPower]='intialPower'></app-manticore>
+      <app-dragon [initialPower]='intialPower'></app-dragon>
+    </div>
+  </fieldset>
+</div>
