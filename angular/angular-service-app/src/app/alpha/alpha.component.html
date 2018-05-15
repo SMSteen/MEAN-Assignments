@@ -1,0 +1,9 @@
+<fieldset>
+  <legend>{{componentName}}</legend>
+  <button (click)="addRandomNum()">Generate Sequence 1</button>
+  <ul>
+    <li *ngFor="let number of numbersAlpha">
+      {{ number }}
+    </li>
+  </ul>
+</fieldset>

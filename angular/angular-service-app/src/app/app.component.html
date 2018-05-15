@@ -1,0 +1,7 @@
+<app-alpha></app-alpha>
+<app-beta></app-beta>
+<fieldset>
+    <legend>{{componentName}}</legend>
+    <button (click)="getDifference()">Generate Difference</button>
+    <p *ngIf="difference">{{difference}}</p>
+</fieldset>
