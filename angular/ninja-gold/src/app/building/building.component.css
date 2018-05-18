@@ -1,0 +1,59 @@
+.building{
+    width: 24%;
+    margin: 5px;
+    display: inline-block;
+    vertical-align: top;
+    border: 1px dotted #252525;
+    box-shadow: 1px 2px 3px #808080;
+    text-align: center; 
+    background-color: #fff7e69e;
+}
+@media screen and (max-width: 1024px){
+    .building {
+        width: 48%;
+    }
+}
+@media screen and (max-width: 500px){
+    .building {
+        width: 100%;
+        display: block;
+    }
+}
+.location{
+    margin: 0 auto;
+    width: 90%;
+    height: 260px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+}
+#farm{
+    background-image: url('../building/images/farm.jpg');
+
+}
+#cave{
+    background-image: url('../building/images/cave.jpg');
+}
+#house{
+    background-image: url('../building/images/house.jpg');
+}
+#casino{
+    background-image: url('../building/images/casino.jpg');
+}
+button{
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: 1.5em;
+    background-color: #e6b800;
+    border-radius: 5px;
+    border: 1px solid #252525;
+    box-shadow: 0 0 5px 5px #fff7e69e;
+    cursor: pointer;
+    margin: 110px auto;
+}
+h1, h2 {
+    margin: .5em;
+}
+h2 {
+    font-size: 1.2em;
+}

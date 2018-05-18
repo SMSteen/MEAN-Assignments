@@ -1,0 +1,9 @@
+.activities{
+    padding: 5px;
+}
+.earned {
+    color: #008000;
+}
+.lost{
+    color: #b30000;
+}
