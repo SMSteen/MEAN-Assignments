@@ -1,0 +1,52 @@
+.form, .result{
+    display: inline-block;
+    vertical-align: -webkit-baseline-middle;
+    width: 35%;
+    margin: 0 15px;
+}
+.form{
+    border: 1px dotted #004d66;
+}
+label, input{
+    width: 45%;
+    margin: 5px;
+}
+button{
+    display: block;
+    margin: 10px auto;
+    width: fit-content;
+    padding: 5px 10px;
+    background-color: #004d66;
+    color: whitesmoke;
+    border: 1px solid #004d66;
+    border-radius: 5px;
+    box-shadow: 1px 2px 3px #252525;
+    font-weight: bold;
+    font-size: 14pt;
+    cursor: pointer;
+}
+button:disabled{
+    background-color: #808080;
+    color: whitesmoke;
+    border: none;
+    font-weight: inherit;
+    opacity: .4;
+}
+.result{
+    width: 40%;
+}
+.needs-work{
+    color: red;
+}
+.decent {
+    color: orange;
+}
+.good{
+    color: black;
+}
+.great{
+    color: green;
+}
+.elite{
+    color: blue;
+}

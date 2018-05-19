@@ -1,6 +1,6 @@
-js_fundamentals
 .git
 .vscode
+js_fundamentals/
 node_server/
 node_module_basics/
 hello_express/
@@ -10,3 +10,4 @@ basic_mongoose_app/
 api_tasks/
 myFirstAngularApp/
 typescript/
+angular-service-http-app/

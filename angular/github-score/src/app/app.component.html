@@ -1,0 +1,18 @@
+<h1>GitHub Score</h1>
+<div class="form">
+  <form (ngSubmit)="getScore(form)" #form='ngForm'> 
+    <label for="username">GitHub Username</label>
+    <input type="text" name="username" [ngModel]="username" required>
+    <button [disabled]="form.invalid">Calculate Github Score</button>
+  </form>
+</div>
+<div class="result">
+  <h1>{{ username }} Score: <span>{{ ghScore }}</span></h1>
+  <h4 [ngClass]="{
+    'needs-work': ghScore<20,
+    'decent': ghScore>20 && ghScore<50,
+    'good': ghScore>50 && ghScore<100,
+    'great': ghScor>100 && ghScore<200,
+    'elite': ghScore>=200
+  }">{{ ghScore | evaluation }}</h4>
+</div>
