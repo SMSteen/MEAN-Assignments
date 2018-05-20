@@ -1,0 +1,25 @@
+<div class="container" *ngIf="!cityChosen">  <!-- City has not been chosen to display weather -->
+  <h2>Select a city from above to view the current weather!</h2>
+</div>
+
+<div class="container" *ngIf="cityChosen">  <!-- Display weather for selected City -->
+  <h1>{{ city }}</h1>
+  <p class="as-of-time">as of {{ rightNow | date :'E, MMM d' }} at {{ rightNow | date :'h:mm a' }} </p>
+  <div class="weather">
+    <div>
+      <img src="{{ icon }}" alt="weather-icon">
+      <h2>{{ currentTemp | number: '1.0-0' }}&deg; F</h2>
+      <p class="avgs">{{ high | number: '1.0-0' }}&deg; F<br>{{ low | number: '1.0-0' }}&deg; F</p>
+      <p>{{ desc | titlecase }}</p>
+    </div>
+    <ul>
+      <li>Humidity: <span>{{ currHumidity }}%</span></li>
+      <li>Barometric Pressure: <span>{{ baroPressure | number: '1.2-2' }} in</span></li>
+      <li>Cloud Cover: <span>{{ cloudCover }}%</span></li>
+      <li>Winds: <span>{{ winds | number: '1.0-0' }} {{ windDir }}</span></li>
+    </ul>
+    <p>Sunrise <span>{{ sunrise | date :'h:mm a' }}</span></p>
+    <p>Sunset <span>{{ sunset | date :'h:mm a' }}</span></p>
+  </div>
+  <img src="{{ imgSrc }}" alt="{{ city }}">
+</div>
