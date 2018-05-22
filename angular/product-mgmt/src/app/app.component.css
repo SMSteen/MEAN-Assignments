@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ul, a{
+    padding: 5px 10px;
+    background-color: #373e62;
+    color: whitesmoke;
+}
+a{
+    text-decoration-line: none;
+    font-size: 14pt;
+}
+li{
+    list-style-type: none;
+    display: inline-block;
+    margin: 10px;
+}
+li:hover{
+    font-weight: bold;
+}

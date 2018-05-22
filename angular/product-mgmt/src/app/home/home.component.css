@@ -1,0 +1,20 @@
+.jumbotron{
+    margin: 1em 0;
+    padding: 2.5rem 2.5rem;
+    background-color: #dee1ed;
+    border-radius: 10px;
+}
+h1{
+    margin: 0;
+}
+.btn-primary{
+    padding: 10px;
+    background-color: #343A5C;
+    border-color: #343A5C;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    box-shadow: 1px 1px 1px #252525;
+    display: inline-block;
+    text-decoration: none;
+}

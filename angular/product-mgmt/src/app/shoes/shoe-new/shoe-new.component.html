@@ -1,0 +1,105 @@
+<div class="container-fluid">
+  <h1>Add a New Product</h1>
+  <button (click)="onCancel()" class="btn-primary">Cancel</button>
+  <form (submit)="onSubmit($event, form)" #form='ngForm'>
+    <fieldset>
+      <legend>Product Details</legend>
+      <label for="brand">Brand</label>
+      <input type="text" name="brand"
+        required
+        minlength="4"
+        [(ngModel)]="shoe.brand"
+        #brand="ngModel"
+        [ngModelOptions]="{updateOn: 'blur'}"
+      >
+      <p *ngIf="brand.invalid && (brand.dirty || brand.touched)" class="text-error">
+        Please enter the brand name.
+      </p>
+
+      <label for="item">Item</label>
+      <input type="text" name="item"
+        required
+        minlength="2"
+        [(ngModel)]="shoe.item"
+        #item="ngModel"
+        [ngModelOptions]="{updateOn: 'blur'}"
+      >
+      <p *ngIf="item.invalid && (item.dirty || item.touched)" class="text-error">
+        Please enter the item name.
+      </p>
+
+      <label for="price">Price</label>
+      <input type="number" name="price"
+        required
+        [(ngModel)]="shoe.price"
+        #price="ngModel"
+        [ngModelOptions]="{updateOn: 'blur'}"
+      >
+      <p *ngIf="price.invalid && (price.dirty || price.touched)" class="text-error">
+        Please enter the price for this item.
+      </p>
+
+      <label for="color">Color</label>
+      <input type="text" name="color"
+        required
+        [(ngModel)]="shoe.color"
+        #color="ngModel"
+        [ngModelOptions]="{updateOn: 'blur'}"
+      >
+      <p *ngIf="color.invalid && (color.dirty || color.touched)" class="text-error">
+        Please enter the color of this item.
+      </p>
+
+      <label for="style">Style</label>
+      <select name="style"
+        required
+        [(ngModel)]="shoe.style"
+        #style="ngModel"
+        [ngModelOptions]="{updateOn: 'blur'}"
+      >
+        <option value="not_selected" selected>Select style</option>
+        <option value="boatshoes">Boat Shoes</option>
+        <option value="boots">Boots</option>
+        <option value="mules">Clogs & Mules</option>
+        <option value="loafers">Loafers</option>
+        <option value="oxfords">Oxfords</option>
+        <option value="sandals">Sandals</option>
+        <option value="pumps">Pumps</option>
+        <option value="sneakers">Sneakers & Athletic</option>
+        <option value="wedges">Wedges</option>
+      </select>
+      <p *ngIf="(style.invalid || style.value === 'not_selected') && (style.dirty || style.touched)" class="text-error">
+        Please select the style.
+      </p>
+
+      <label for="dept">Department</label>
+      <select name="dept"
+        required
+        [(ngModel)]="shoe.dept"
+        #dept="ngModel"
+      >
+        <option value="not_selected" selected>Select department</option>       
+        <option value="womens">Women's</option>
+        <option value="mens">Men's</option>
+        <option value="kids">Kid's</option>
+      </select>
+      <p *ngIf="(dept.invalid || dept.value === 'not_selected') && (dept.dirty || dept.touched)" class="text-error">
+        Please select the department.
+      </p>
+
+      <label for="image">Image URL</label>
+      <input type="text" name="image"
+      [(ngModel)]="shoe.image"
+      #image="ngModel"
+      >
+
+      <label for="qty">Quantity</label>
+      <input type="number" name="qty"
+      [(ngModel)]="shoe.qty"
+      #qty="ngModel"
+      >
+    </fieldset>
+    <button type="submit" *ngIf="!form.valid" disabled>Add Product</button>
+    <button type="submit" *ngIf="form.valid">Add Product</button>
+  </form>
+</div>

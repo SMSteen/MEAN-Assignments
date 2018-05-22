@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <h1>Product List</h1>
+  <a [routerLink]="['new']" class="btn-primary">Add New</a>
+  <div class="row">
+    <div *ngFor="let shoe of shoes" class="col-3 product">
+      <img src="{{shoe.image}}" alt="{{shoe.item}}">
+      <h2>{{shoe.brand}}</h2>
+      <h1>{{shoe.item}}</h1>
+      <h1>{{shoe.price | currency }}</h1>
+      <h3>Size: {{shoe.size}}<span class="spacer">|</span>Qty: {{shoe.qty}}</h3>
+      <a [routerLink]="['edit', shoe.id]" class="btn">Edit</a>
+      <a class="btn btn-delete">Remove</a>
+    </div>
+  </div>
+</div>
