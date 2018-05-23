@@ -8,16 +8,28 @@ import { SHOES } from '../app/data/shoe-data';
   providedIn: 'root'
 })
 export class ProductdataService {
-  shoes: Shoe[] = SHOES;
+  shoeData$ = new BehaviorSubject<Shoe[]>(SHOES);
 
   constructor() { }
 
-  addShoe(shoe){
-    this.shoes.push(shoe)
+  addShoe(shoe: Shoe){
+    const temp = this.shoeData$.getValue()
+    //add the new prodcut
+    temp.push(shoe);
+    this.shoeData$.next(temp);
   }
 
-  getShoeList(): Observable<Shoe[]> {
-    return of (this.shoes);
+  deleteShoe(id: number){
+    const temp = this.shoeData$.getValue();
+    //find the matching product
+    for (var i=0; i < temp.length; i++) {
+      if (temp[i].id === id) {
+        //remove the product
+        temp.splice(i, 1);
+        this.shoeData$.next(temp);
+        return;
+      }
+    }
   }
 
 }

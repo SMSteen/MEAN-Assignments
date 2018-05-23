@@ -14,35 +14,34 @@ import { ProductdataService } from '../../productdata.service';
 export class ShoeDetailsComponent implements OnInit {
   id: number;
   shoes: Shoe[] = [];
-  shoe: object = {};
 
   constructor(private _route: ActivatedRoute, private _router: Router, private _productdataService: ProductdataService) {
+
+  }
+  
+  ngOnInit() {
     //get the id of the selected product passed through params
     this._route.paramMap.subscribe(params => {
       console.log(params.get('id'));
       this.id = Number(params.get('id'));
     })
-  }
-  
-  ngOnInit() {
-    // get the list of products
-    this._productdataService.getShoeList()
-      .subscribe(shoes => this.shoes = shoes);
-      this.getShoe();
+
+    //get the shoe
+    this.shoes = this._productdataService.shoeData$.getValue().filter(shoe => shoe.id === this.id);
+
   }
 
-  getShoe(){
-    //find the matching product
-    for (var i=0; i < this.shoes.length; i++) {
-      if (this.shoes[i].id === this.id) {
-        console.log('found the shoe')
-        this.shoe = this.shoes[i]
-      }
-    }
+  onSubmit(){
+    console.log('changes submitted');
+    this._router.navigateByUrl('/products');
   }
-
 
   onCancel(){
-    this._router.navigate(['products'])
+    this._router.navigateByUrl('/products');
+  }
+
+  onDelete(id){
+    this._productdataService.deleteShoe(id)
+    this._router.navigateByUrl('/products');
   }
 }

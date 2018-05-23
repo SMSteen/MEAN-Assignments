@@ -18,20 +18,17 @@ export class ShoeNewComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(event: Event, form: NgForm) {
+  onSubmit(event: Event) {
     event.preventDefault();
-    console.log('new shoe to be added', this.shoe);
-    
     //update the behavior subject
     this._productdataService.addShoe(this.shoe)
-
+    //reset the product for next addition
     this.shoe = new Shoe();
-    form.reset();
-    
-    this._router.navigate(['products'])
+    //redirect to product listing
+    this._router.navigateByUrl('/products');
   }
 
   onCancel(){
-    this._router.navigate(['products'])
+    this._router.navigateByUrl('/products');
   }
 }

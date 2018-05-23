@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <h1>Add a New Product</h1>
   <button (click)="onCancel()" class="btn-primary">Cancel</button>
-  <form (submit)="onSubmit($event, form)" #form='ngForm'>
+  <form (submit)="onSubmit($event)" #form='ngForm'>
     <fieldset>
       <legend>Product Details</legend>
       <label for="brand">Brand</label>

@@ -3,6 +3,7 @@ import { ProductdataService } from '../../productdata.service';
 
 import { Shoe } from '../../shoe';
 import { SHOES } from '../../data/shoe-data';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-shoe-list',
@@ -10,13 +11,17 @@ import { SHOES } from '../../data/shoe-data';
   styleUrls: ['./shoe-list.component.css']
 })
 export class ShoeListComponent implements OnInit {
+  id: number;
   shoes: Shoe[] = [];
 
-  constructor(private _productdataService: ProductdataService) { }
+  constructor(private _productdataService: ProductdataService, private _route: ActivatedRoute) { }
 
-  ngOnInit() {
-    this._productdataService.getShoeList()
+  ngOnInit() {    
+    this._productdataService.shoeData$
       .subscribe(shoes => this.shoes = shoes);
   }
 
+  onDelete(id){
+    this._productdataService.deleteShoe(id);
+  }
 }

@@ -9,7 +9,7 @@
       <h1>{{shoe.price | currency }}</h1>
       <h3>Size: {{shoe.size}}<span class="spacer">|</span>Qty: {{shoe.qty}}</h3>
       <a [routerLink]="['edit', shoe.id]" class="btn">Edit</a>
-      <a class="btn btn-delete">Remove</a>
+      <button class="btn-delete" (click)="onDelete(shoe.id)">Remove</button>
     </div>
   </div>
 </div>

@@ -4,6 +4,7 @@ h1{
 }
 .btn-primary{
     display: inline-block;
+    margin: 0 10px;
 }
 form{
     display: inline-block;
@@ -55,7 +56,7 @@ button{
     display: block;
     text-decoration: none;
     width: fit-content;
-    margin: 0 auto;
+    cursor: pointer;
 }
 button:disabled{
     background-color: #808080;
@@ -63,6 +64,10 @@ button:disabled{
     border: none;
     font-weight: inherit;
     opacity: .4;
+    margin: 0 auto;
+}
+form button {
+    margin: 0 auto;
 }
 .text-error{
     color: red;
@@ -70,12 +75,22 @@ button:disabled{
     width: 65%;
     margin: 0 0 0 30%;
 }
-img{
+.visual-display{
     display: inline-block;
-    width: 20%;
-    margin: 5% 0 5% 10%;
     vertical-align: top;
+    width: 35%;
+    margin: 5% 0 0 5%;
+}
+img{
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+    /* vertical-align: top; */
     padding: 20px;
     border: .5px dotted #343A5C;
     border-radius: 10px;
+}
+.visual-display button{
+    display: block;
+    margin: 10px auto;
 }
