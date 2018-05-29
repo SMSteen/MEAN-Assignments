@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <form (submit)="onSubmit(form)" #form="ngForm">
+    <label for="content">Note:</label>
+    <input type="text" name="content"
+      required
+      minlength="3"
+      [(ngModel)] = "newNote.content"
+      #content="ngModel"
+    >
+    <button type="submit" *ngIf="!form.valid" disabled>Add Note</button>
+    <button type="submit" *ngIf="form.valid">Add Note</button>
+
+    <p *ngIf="!content.value && (content.dirty || content.touched)" class="text-error">
+      Oops. You forgot to enter your note. It should be a minimum of 3 characters.
+    </p>
+  </form>
+</div>

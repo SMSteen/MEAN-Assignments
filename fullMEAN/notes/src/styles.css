@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+.container-fluid{
+    padding: 0 15px;
+}
+.container-fluid.footer{
+    padding: 10px;
+}
+footer{
+    display: inline-block;
+}
+img.footer-logo{
+    width: 3%;
+    margin-right: 5px; 
+}

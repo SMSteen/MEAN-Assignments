@@ -1,0 +1,8 @@
+<div class="container-fluid">
+  <div class="all-notes">
+    <div *ngFor="let note of notes" class="note">
+      <p>Noted on: {{ note.createdAt | date : 'medium' }}</p>
+      <p>{{ note.content }}</p>
+    </div>
+  </div>
+</div>

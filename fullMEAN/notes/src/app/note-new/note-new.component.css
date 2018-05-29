@@ -1,0 +1,39 @@
+form{
+    padding: 15px;
+    background-color: whitesmoke;
+    border: 1px solid #252525;
+}
+label {
+    display: inline-block;
+    width: 50px;
+}
+input {
+    display: inline-block;
+    width: 80%;
+    padding: 5px;
+}
+button {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #204060;
+    color: whitesmoke;
+    display: inline-block;
+    margin-left: 2%;
+    width: fit-content;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 1px 2px 3px #252525;
+}
+button:disabled{
+    background-color: #808080;
+    color: whitesmoke;
+    border: none;
+    font-weight: inherit;
+    opacity: .4;
+    cursor: auto;
+}
+.text-error{
+    color: #b30000;
+    font-weight: bold;
+    text-align: center;
+}
