@@ -2,7 +2,7 @@ const Note = require('mongoose').model('Note');
 
 module.exports = {
     index(request, response) {
-        Note.find({})
+        Note.find({}).sort({createdAt: -1})
             .then(notes => response.json(notes))
             .catch(error => console.log('received error in notes.js file, ', error));
     },
