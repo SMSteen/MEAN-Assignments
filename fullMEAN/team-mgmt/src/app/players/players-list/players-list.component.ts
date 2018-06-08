@@ -23,14 +23,18 @@ export class PlayersListComponent implements OnInit {
       .subscribe(players => this.players = players);
   }
 
-  onDelete(playerID: string){
-    console.log('delete player from players-list component', playerID);
-    this.playerService.deletePlayer(playerID).subscribe(
-      removedPlayer => {
-        this.players = this.players.filter(rp => rp._id !== playerID);
-        this.router.navigateByUrl('/players/list');
-      }
-    );
+  onDelete(playerID: string, playerName: string){
+    let confirmDelete = confirm(`Are you sure you want to delete ${playerName} from the player list?`)
+    if (confirmDelete) {
+      console.log('yes, delete the player')
+      console.log('delete player from players-list component', playerID);
+      this.playerService.deletePlayer(playerID).subscribe(
+        removedPlayer => {
+          this.players = this.players.filter(rp => rp._id !== playerID);
+          this.router.navigateByUrl('/players/list');
+        }
+      );
+    }
   }
 
 }

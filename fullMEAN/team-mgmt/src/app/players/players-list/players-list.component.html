@@ -9,7 +9,7 @@
       <tr *ngFor="let player of players">
         <td>{{ player.name | titlecase }}</td>
         <td>{{ player.position | titlecase }}</td>
-        <td><button (click)="onDelete(player._id)">Delete Player</button></td>
+        <td><button (click)="onDelete(player._id, player.name)">Delete Player</button></td>
       </tr>
     </tbody>
   </table>
