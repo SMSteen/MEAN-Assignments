@@ -1,0 +1,16 @@
+.container {
+    padding: 15px;
+    background: #f4fff4;
+    border: 1.5px solid #003300;
+}
+.spacer {
+    margin: 0 15px;
+    color: #003300;
+    font-size: 1.5em;
+}
+h2 {
+    margin: 5px 10px 10px 5px;
+}
+a {
+    color: #003300;
+}

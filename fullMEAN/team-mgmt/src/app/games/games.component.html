@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>Player Status - Game {{gameNum}}</h1>
+  <h2>
+    <a routerLink="/status/game/1">Game 1</a>
+    <span class="spacer">|</span>
+    <a routerLink="/status/game/2">Game 2</a>
+    <span class="spacer">|</span>
+    <a routerLink="/status/game/3">Game 3</a>
+  </h2>
+  <table>
+    <thead>
+      <th>Player Name</th>
+      <th>Actions</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let player of players">
+        <td>{{ player.name | titlecase }}</td>
+        <td>
+          <button (click)="updateStatus(player, 'playing', gameNum)" [ngClass]="player.status[gameStatus]" class="green">Playing</button>
+          <button (click)="updateStatus(player, 'not-playing', gameNum)" [ngClass]="player.status[gameStatus]" class="red">Not Playing</button>
+          <button (click)="updateStatus(player, 'undecided',gameNum)" [ngClass]="player.status[gameStatus]" class="yellow">Undecided</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

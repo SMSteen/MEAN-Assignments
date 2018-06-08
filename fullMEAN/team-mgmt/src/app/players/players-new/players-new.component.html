@@ -1,0 +1,35 @@
+<div class="container">
+  <h2>Add Player</h2>
+  <form (submit)="onSubmit($event, form)" #form='ngForm'>
+    <label for="name">Player Name:</label>
+    <input type="text" name="name"
+      required
+      minlength="2"
+      [(ngModel)]="player.name"
+      #name='ngModel'
+      [ngModelOptions]="{updateOn: 'blur'}"
+    >
+    <p *ngIf="name.invalid && (name.dirty || name.touched)" class="text-error">
+      Please enter the player's name.
+    </p>
+
+    <label for="position">Preferred Position:</label>
+    <select name="position"
+      [(ngModel)]="player.position"
+    >
+      <option value="no preference">No Preference</option>
+      <option value="pitcher">Pitcher</option>
+      <option value="catcher">Catcher</option>
+      <option value="first base">1st Base</option>
+      <option value="second base">2nd Base</option>
+      <option value="third base">3rd Base</option>
+      <option value="shortstop">Shortstop</option>
+      <option value="left fielder">Left Fielder</option>
+      <option value="center fielder">Center Fielder</option>
+      <option value="right fielder">Right Fielder</option>
+    </select>
+
+    <button type="submit" *ngIf="!form.valid" disabled>ADD</button>
+    <button type="submit" *ngIf="form.valid">ADD</button>
+  </form>
+</div>

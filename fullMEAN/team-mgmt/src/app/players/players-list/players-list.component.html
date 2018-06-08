@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <table>
+    <thead>
+      <th>Player Name</th>
+      <th>Preferred Position</th>
+      <th>Actions</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let player of players">
+        <td>{{ player.name | titlecase }}</td>
+        <td>{{ player.position | titlecase }}</td>
+        <td><button (click)="onDelete(player._id)">Delete Player</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

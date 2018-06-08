@@ -1,0 +1,54 @@
+/* You can add global styles to this file, and also import other style files */
+.container-fluid{
+    padding: 0 15px;
+}
+.container {
+    padding: 15px;
+    background: #f4fff4;
+    border: 1.5px solid #003300;
+}
+.container-fluid.footer{
+    padding: 10px;
+}
+footer{
+    display: inline-block;
+}
+img.footer-logo{
+    width: 3%;
+    margin-right: 5px; 
+}
+/* fix table width, align text */
+table{
+    table-layout: fixed;
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    border: 1.5px solid #003300;
+}
+/* control table borders and row height */
+th, td{
+    border-collapse: collapse;
+    border: 1px solid #808080;
+    padding: .6em;
+    word-wrap: break-word;
+}
+/* specify table column widths */
+tr th:nth-of-type(1){
+    width: 35%;
+}
+tr th:nth-of-type(2){
+    width: 35%;
+}
+tr th:nth-of-type(3){
+    width: 30%;
+}
+/* highlight table header */
+th{
+    background-color: #003300;
+    color: white;
+    font-size: 14pt;
+}
+/* alternate table row colors */
+tbody tr:nth-of-type(even){
+    background: #e6ffe6;
+}

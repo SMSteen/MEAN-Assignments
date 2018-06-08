@@ -1,0 +1,12 @@
+table button {
+    width: fit-content;
+    padding: 5px 10px;
+    background-color: #003300;
+    color: white;
+    border: 1px solid #003300;
+    border-radius: 5px;
+    box-shadow: 1px 2px 3px #252525;
+    margin: 10px auto 0px auto;
+    font-size: 1em;
+    cursor: pointer;
+}
