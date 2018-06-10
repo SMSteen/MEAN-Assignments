@@ -1,0 +1,19 @@
+<app-nav></app-nav>
+
+<div class="bike-container">
+  <div *ngFor="let bike of bikes" class="info-card">
+    <img src="{{bike.imgURL}}" alt="{{bike.title}}">
+    <div class="info-card-main">
+      <h2>{{bike.title}}</h2>
+      <p>{{bike.description}}</p>
+    </div>
+    <div class="info-card-sub">
+      <h2>{{bike.price | currency}}</h2>
+      <p>{{bike.location}}</p>
+      <!-- *ngIf -->
+      <button (click)="onDelete(bike._id)">Delete</button>
+      <!-- *ngIf -->
+      <button (click)="onContact(bike._id)">Contact</button>
+    </div>
+  </div>
+</div>
