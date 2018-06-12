@@ -8,9 +8,5 @@ router
     .post('/players', playerController.create)
     .put('/players/:playerID', playerController.update)
     .delete('/players/:playerID', playerController.destroy)
-    // .delete('/players/:playerID', playerController.destroy)
-    .all('*', function(request, response, next) {
-        response.sendFile(path.resolve('./dist/team-mgmt/index.html'))
-    })
 
 module.exports = router;
