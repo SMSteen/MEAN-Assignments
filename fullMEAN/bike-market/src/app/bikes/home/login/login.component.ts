@@ -30,12 +30,11 @@ export class LoginComponent implements OnInit {
     console.log('login.component --> form data', user)
     this.authService.login(user).subscribe(
       logged => {
-        //TEMP VARIABLE UNTIL USING SESSION
-        this.userIDSession = logged._id;
+        this.authService.userID = logged._id;
         this.router.navigateByUrl('browse');
       },
       error => {
-        this.loginError = error;
+        this.loginError = error.error;
       }
     )
   }

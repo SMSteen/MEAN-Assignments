@@ -8,7 +8,7 @@ export const BIKES: Bike[] = [
         price: 100,
         location: 'Raleigh, NC',
         imgURL: '/assets/bike1.jpg',
-        owner: '1a389bj2jb1',
+        owner: '5b1ef42357dada1e8ce3715f',
     },
     {
         _id: 2,
@@ -17,7 +17,7 @@ export const BIKES: Bike[] = [
         price: 250,
         location: 'Denver, NC',
         imgURL: '/assets/bike2.jpg',
-        owner: '1a389bj2jb1',
+        owner: '5b1ef42357dada1e8ce3715f',
     },
     {
         _id: 3,

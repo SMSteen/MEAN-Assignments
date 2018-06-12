@@ -5,16 +5,16 @@ import { Observable, of } from 'rxjs';
 import { Bike } from '../bike';
 import { User } from '../user';
 
-//temp
+// //temp
 import { BIKES } from '../data-testing/bike-data';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BikeService {
-  baseURL: string = '/api/bikes';  
+  baseURL: string = '/api/bikes/';  
   bikes: Bike[] = BIKES;
-  bike: Bike;
+  // bike: Bike;
 
   constructor(
     private http: HttpClient
@@ -34,9 +34,9 @@ export class BikeService {
   // }
 
   //TEMP --> REPLACE WITH DB CALL ABOVE
-  deleteBike(id: number): Observable<Bike> {
-    const deletedBike = this.bikes.find(bike => bike._id === id)
-    console.log('bike-service --> deleting bike', deletedBike)
-    return of(deletedBike);
-  }
+  // deleteBike(id: number): Observable<Bike> {
+  //   const deletedBike = this.bikes.find(bike => bike._id === id)
+  //   console.log('bike-service --> deleting bike', deletedBike)
+  //   return of(deletedBike);
+  // }
 }

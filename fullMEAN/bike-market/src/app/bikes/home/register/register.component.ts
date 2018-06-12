@@ -26,11 +26,14 @@ export class RegisterComponent implements OnInit {
     console.log('register-component --> form data', user)
     this.authService.register(user).subscribe(
       newUser => {
-        // this.user = newUser;
+        console.log('register-component --> user successfully added', newUser)
+        //saving userID in service
+        this.authService.userID = newUser._id;
         this.router.navigateByUrl('browse');
       },
       error => {
-        this.registerError = error;
+        console.log('register-component, error creating user -->', error)
+        this.registerError = error.error;
       }
     )
   }

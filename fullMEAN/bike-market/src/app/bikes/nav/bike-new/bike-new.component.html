@@ -1,3 +1,38 @@
-<p>
-  bike-new works!
-</p>
+<div>
+  <h2>Create Listing</h2>
+  <form (submit)='onSubmit(newbike.value, $event)' class='new-bike' #newbike='ngForm'>
+
+    <label for="title">Listing Title:</label>
+    <input type="text" name="title" required [(ngModel)]='bike.title'>
+    <p *ngIf="title.invalid && (title.dirty || title.touched)" class="text-error">
+      Please enter a title for this listing.
+    </p>
+    
+    <label for="description">Description:</label>
+    <textarea name="description" cols="20" rows="3" required [(ngModel)]='bike.description'></textarea>
+    <p *ngIf="description.invalid && (description.dirty || description.touched)" class="text-error">
+      Please describe the bike.
+    </p>    
+    
+    <label for="price">Price:</label>
+    <input type="number" name="price" min="1" required [(ngModel)]='bike.price'>
+    <p *ngIf="price.invalid && (price.dirty || price.touched)" class="text-error">
+      Price is required.
+    </p>    
+
+    <label for="location">Location:</label>
+    <input type="text" name="location" required [(ngModel)]='bike.location'>
+    <p *ngIf="location.invalid && (location.dirty || location.touched)" class="text-error">
+      Please enter the location of the bike.
+    </p>    
+
+    <label for="imgURL">Image Upload:</label>
+    <input type="text" name="imgURL" required [(ngModel)]='bike.imgURL'>
+    <p *ngIf="imgURL.invalid && (imgURL.dirty || imgURL.touched)" class="text-error">
+      Please upload a picture of the bike.
+    </p>  
+
+    <button type="submit" *ngIf='newbike.valid'>Create Listing</button>
+    <button type="submit" *ngIf='!newbike.valid' disabled>Create Listing</button>
+  </form>
+</div>
