@@ -8,20 +8,25 @@ import { User } from '../user';
   providedIn: 'root'
 })
 export class AuthService {
-  baseURL: string = '/api/auth/';  
+  baseURL = '/api/auth/';
   userID: string;
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) {}
 
-  login(user): Observable<User>{
-    console.log('auth.service --> sending user to database for verification', user)
+  login(user): Observable<User> {
+    console.log(
+      'auth.service --> sending user to database for verification',
+      user
+    );
     return this.http.post<User>(this.baseURL + 'login', user);
   }
 
-  register(user): Observable<User>{
+  register(user): Observable<User> {
+    console.log('auth.service --> sending user to database for addition', user);
     return this.http.post<User>(this.baseURL + 'register', user);
   }
 
+  getOneUser(id: string): Observable<User> {
+    return this.http.get<User>(this.baseURL + id);
+  }
 }

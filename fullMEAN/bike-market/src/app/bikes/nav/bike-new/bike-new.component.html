@@ -1,38 +1,24 @@
-<div>
-  <h2>Create Listing</h2>
-  <form (submit)='onSubmit(newbike.value, $event)' class='new-bike' #newbike='ngForm'>
+<div class="new-bike-container">
+  <h1>Create Listing</h1>
+  <form (submit)='create(newbike, $event)' #newbike='ngForm' class="new-bike">
 
     <label for="title">Listing Title:</label>
-    <input type="text" name="title" required [(ngModel)]='bike.title'>
-    <p *ngIf="title.invalid && (title.dirty || title.touched)" class="text-error">
-      Please enter a title for this listing.
-    </p>
-    
+    <input type="text" name="title" required [(ngModel)]='bike.title' #title='ngModel'>
+
     <label for="description">Description:</label>
-    <textarea name="description" cols="20" rows="3" required [(ngModel)]='bike.description'></textarea>
-    <p *ngIf="description.invalid && (description.dirty || description.touched)" class="text-error">
-      Please describe the bike.
-    </p>    
-    
+    <textarea name="description" cols="30" rows="3" required [(ngModel)]='bike.description' #description='ngModel'></textarea>
+
     <label for="price">Price:</label>
-    <input type="number" name="price" min="1" required [(ngModel)]='bike.price'>
-    <p *ngIf="price.invalid && (price.dirty || price.touched)" class="text-error">
-      Price is required.
-    </p>    
+    <input type="number" name="price" min="1" required [(ngModel)]='bike.price' #price='ngModel'>
 
     <label for="location">Location:</label>
-    <input type="text" name="location" required [(ngModel)]='bike.location'>
-    <p *ngIf="location.invalid && (location.dirty || location.touched)" class="text-error">
-      Please enter the location of the bike.
-    </p>    
+    <input type="text" name="location" required [(ngModel)]='bike.location' #location='ngModel'>
 
-    <label for="imgURL">Image Upload:</label>
+    <label for="imgURL">Upload Image:</label>
     <input type="text" name="imgURL" required [(ngModel)]='bike.imgURL'>
-    <p *ngIf="imgURL.invalid && (imgURL.dirty || imgURL.touched)" class="text-error">
-      Please upload a picture of the bike.
-    </p>  
 
-    <button type="submit" *ngIf='newbike.valid'>Create Listing</button>
-    <button type="submit" *ngIf='!newbike.valid' disabled>Create Listing</button>
+    <button *ngIf='newbike.valid' type="submit">Create</button>
+    <button *ngIf='!newbike.valid' type="submit" disabled>Create</button>
+
   </form>
 </div>

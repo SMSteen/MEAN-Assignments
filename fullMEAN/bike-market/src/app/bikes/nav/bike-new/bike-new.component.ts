@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Bike } from '../../../bike';
 import { BikeService } from '../../../services/bike.service';
 import { AuthService } from '../../../services/auth.service';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -15,6 +16,9 @@ export class BikeNewComponent implements OnInit {
   bike: Bike = new Bike();
   userID: string;
 
+  @Output()
+  newBike: EventEmitter<Bike> = new EventEmitter();
+
   constructor(
     private router: Router,
     private bikeService: BikeService,
@@ -25,9 +29,21 @@ export class BikeNewComponent implements OnInit {
     this.userID = this.authService.userID;
   }
 
-  onSubmit(bike: Bike, event: Event): void {
-    // this.bike.owner = this.authService.userID;
+  create(form: NgForm, event: Event): void {
     event.preventDefault();
-    console.log('bike-new.component --> form data', bike)
+    const { value: bike } = form;
+    console.log('bike-new.component --> form data', bike);
+    this.bikeService.addBike(bike).subscribe(
+      newBike => {
+        console.log('bike-new.component --> bike successfully added', newBike);
+        // this.router.navigateByUrl('/listings');
+        this.newBike.emit(newBike);
+        form.reset();
+      },
+      error => {
+        console.log('bike-new.component, error creating bike -->', error);
+      }
+    );
+
   }
 }

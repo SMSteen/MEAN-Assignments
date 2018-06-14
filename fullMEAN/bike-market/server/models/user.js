@@ -6,7 +6,7 @@ const validator = require('validator');
 const bcrypt = require('bcrypt');
 const saltRounds = 10; //using variable for ease of changing in future
 //Create RegExes for validation
-const passwordRegEx = /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d@!#&$]{8,}$/; //confirm 1 uppercase, 1 num, 8 characters, limited symbols
+const passwordRegEx = /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d@!#&.\/$]{8,}$/; //confirm 1 uppercase, 1 num, 8 characters, limited symbols
 const nameRegEx = /^[\sa-zA-Z.-]{2,}$/; //only letters, dashes, periods and spaces included in name and minimum of 2 characters
 
 const userSchema = new Schema({

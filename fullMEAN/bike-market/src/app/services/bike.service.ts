@@ -1,42 +1,45 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { Bike } from '../bike';
-import { User } from '../user';
-
-// //temp
-import { BIKES } from '../data-testing/bike-data';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BikeService {
-  baseURL: string = '/api/bikes/';  
-  bikes: Bike[] = BIKES;
-  // bike: Bike;
+  baseURL = '/api/bikes/';
+  bikes: Bike[] = [];
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) {}
 
-  // getBikes(): Observable<Bike[]> {
-  //   return this.http.get<Bike[]>(this.baseURL);
-  // }
-
-  //TEMP --> REPLACE WITH DB CALL ABOVE
   getBikes(): Observable<Bike[]> {
-    return of(this.bikes);
+    console.log('bike.service --> getting all bikes');
+    return this.http.get<Bike[]>(this.baseURL);
   }
 
-  // deleteBike(bike: Bike): Observable<Bike> {
-  //   return this.http.delete<Bike>(this.baseURL);
-  // }
+  getSomeBikes(id): Observable<Bike[]> {
+    console.log('bike.service --> getting user-owned bikes');
+    return this.http.get<Bike[]>(`${this.baseURL}?owner:${id}`);
+  }
 
-  //TEMP --> REPLACE WITH DB CALL ABOVE
-  // deleteBike(id: number): Observable<Bike> {
-  //   const deletedBike = this.bikes.find(bike => bike._id === id)
-  //   console.log('bike-service --> deleting bike', deletedBike)
-  //   return of(deletedBike);
-  // }
+  getOneBike(bikeID): Observable<Bike> {
+    console.log('bike.service --> getting one bike');
+    return this.http.get<Bike>(this.baseURL + bikeID);
+  }
+
+  addBike(bike: Bike): Observable<Bike> {
+    console.log('bike.service --> adding new bike', bike);
+    return this.http.post<Bike>(this.baseURL, bike);
+  }
+
+  updateBike(bike: Bike): Observable<Bike> {
+    console.log('bike.service --> updating a bike');
+    return this.http.put<Bike>(this.baseURL + bike._id, bike);
+  }
+
+  deleteBike(bikeID): Observable<Bike> {
+    console.log('bike.service --> deleting a bike');
+    return this.http.delete<Bike>(this.baseURL + bikeID);
+  }
 }

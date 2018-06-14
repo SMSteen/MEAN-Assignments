@@ -6,9 +6,4 @@ export class Bike {
     location: string;
     imgURL: string;
     owner: string;
-
-    //temp until database connection
-    constructor() {
-    this._id = Math.floor(Math.random() * 1000);
-    }
 }

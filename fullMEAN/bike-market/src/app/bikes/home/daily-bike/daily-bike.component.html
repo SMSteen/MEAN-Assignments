@@ -1,12 +1,12 @@
 <h2>Bike of the day!</h2>
 <div class="info-card">
-  <img src="/assets/bike1.jpg" alt="pic1">
+  <img src="{{bike.imgURL}}" alt="{{bike.title}}">
   <div class="info-card-main">
-    <h1>Title</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis quos nam quas fuga, illo ad assumenda maiores. Minus doloremque commodi amet quisquam deleniti ullam, rem unde quaerat iure, exercitationem perspiciatis!</p>
+    <h1>{{bike.title}}</h1>
+    <p>{{bike.description}}</p>
   </div>
   <div class="info-card-sub">
-    <h1>$950</h1>
-    <p>City, State</p>
+    <h1>{{bike.price | currency}}</h1>
+    <p>{{bike.location}}</p>
   </div>
 </div>

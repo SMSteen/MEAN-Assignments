@@ -10,8 +10,8 @@
     <div class="info-card-sub">
       <h2>{{bike.price | currency}}</h2>
       <p>{{bike.location}}</p>
-      <button (click)="onDelete(bike._id)" *ngIf="bike.owner === userID">Delete</button>
-      <button (click)="onContact(bike._id)" *ngIf="bike.owner !== userID">Contact</button>
+      <button (click)="onDelete(bike._id)" *ngIf="bike.owner === userID" class="btn-risk">Delete</button>
+      <button (click)="onContact(bike)" *ngIf="bike.owner !== userID" class="btn-caution">Contact</button>
     </div>
   </div>
 </div>

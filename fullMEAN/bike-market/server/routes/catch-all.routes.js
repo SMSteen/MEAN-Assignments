@@ -3,7 +3,7 @@ const path = require('path');
 
 router.all('*', function(request, response) {
   console.log('sending file');
-  response.sendFile(path.join(__dirname, '../../dist/index.html'));
+  response.sendFile(path.join(__dirname, '../../dist/bike-market/index.html'));
 });
 
 module.exports = router;

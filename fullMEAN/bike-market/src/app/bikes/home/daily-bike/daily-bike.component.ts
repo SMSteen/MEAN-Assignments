@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { BikeService } from '../../../services/bike.service';
+import { ActivatedRoute } from '@angular/router';
+
+import { Bike } from '../../../bike';
 
 @Component({
   selector: 'app-daily-bike',
@@ -6,10 +10,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./daily-bike.component.css']
 })
 export class DailyBikeComponent implements OnInit {
+  bike: Bike;
+  bikes: Bike[] = [];
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private bikeService: BikeService
+  ) {}
 
   ngOnInit() {
+    this.bikeService.getBikes().subscribe(bikes => {
+      this.bike = this.bikes[Math.floor(Math.random() * this.bikes.length) + 1];
+    });
   }
-
 }
