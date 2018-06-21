@@ -1,6 +1,6 @@
-import { Shoe } from '../shoe';
+import { Product } from '../product';
 
-export const SHOES: Shoe[] = [
+export const PRODUCTS: Product[] = [
   {
     _id: 1,
     upc: 12345678901,
@@ -9,11 +9,12 @@ export const SHOES: Shoe[] = [
     image: '/assets/images/emmalalace.jpg',
     cost: 40.25,
     price: 79.21,
-    suggestedretail: 85,
+    suggestedRetail: 85,
     color: 'cream',
     style: 'heels',
-    size: 8,
-    dept: 'womens',
+    size: '8',
+    dept: 'Sporting Goods',
+    category: 'footwear',
     qty: 3
   },
   {
@@ -24,11 +25,12 @@ export const SHOES: Shoe[] = [
     image: '/assets/images/emmalalace.jpg',
     cost: 40.25,
     price: 79.21,
-    suggestedretail: 85,
+    suggestedRetail: 85,
     color: 'cream',
     style: 'heels',
-    size: 7.5,
-    dept: 'womens',
+    size: '7.5',
+    dept: 'Sporting Goods',
+    category: 'footwear',
     qty: 0
   },
   {
@@ -39,11 +41,12 @@ export const SHOES: Shoe[] = [
     image: '/assets/images/emmalaorange.jpg',
     cost: 45.85,
     price: 89.0,
-    suggestedretail: 96.99,
+    suggestedRetail: 96.99,
     color: 'orange',
     style: 'heels',
-    size: 9.5,
-    dept: 'womens',
+    size: '9.5',
+    dept: 'Sporting Goods',
+    category: 'footwear',
     qty: 2
   },
   {
@@ -54,11 +57,12 @@ export const SHOES: Shoe[] = [
     image: '/assets/images/emmalaorange.jpg',
     cost: 45.85,
     price: 89.0,
-    suggestedretail: 96.99,
+    suggestedRetail: 96.99,
     color: 'orange',
     style: 'heels',
-    size: 7.5,
-    dept: 'womens',
+    size: '7.5',
+    dept: 'Sporting Goods',
+    category: 'footwear',
     qty: 1
   },
   {
@@ -69,11 +73,12 @@ export const SHOES: Shoe[] = [
     image: '/assets/images/halldenpalace.jpg',
     cost: 95,
     price: 187.0,
-    suggestedretail: 208.99,
+    suggestedRetail: 208.99,
     color: 'floral',
     style: 'heels',
-    size: 7.5,
-    dept: 'womens',
+    size: '7.5',
+    dept: 'Sporting Goods',
+    category: 'footwear',
     qty: 0
   },
   {
@@ -84,11 +89,12 @@ export const SHOES: Shoe[] = [
     image: '/assets/images/halldenpalace.jpg',
     cost: 95,
     price: 187.0,
-    suggestedretail: 208.99,
+    suggestedRetail: 208.99,
     color: 'floral',
     style: 'heels',
-    size: 6.5,
-    dept: 'womens',
+    size: '6.5',
+    dept: 'Sporting Goods',
+    category: 'footwear',
     qty: 2
   },
   {
@@ -99,11 +105,12 @@ export const SHOES: Shoe[] = [
     image: '/assets/images/stevemaddenred.jpg',
     cost: 38.99,
     price: 85.95,
-    suggestedretail: 100,
+    suggestedRetail: 100,
     color: 'red',
     style: 'sandals',
-    size: 8.5,
-    dept: 'womens',
+    size: '8.5',
+    dept: 'Sporting Goods',
+    category: 'footwear',
     qty: 0
   },
   {
@@ -114,11 +121,12 @@ export const SHOES: Shoe[] = [
     image: '/assets/images/stevemaddenred.jpg',
     cost: 38.99,
     price: 85.95,
-    suggestedretail: 100,
+    suggestedRetail: 100,
     color: 'red',
     style: 'sandals',
-    size: 9,
-    dept: 'womens',
+    size: '9',
+    dept: 'Sporting Goods',
+    category: 'footwear',
     qty: 1
   },
   {
@@ -129,11 +137,12 @@ export const SHOES: Shoe[] = [
     image: '/assets/images/ginetteblack.jpg',
     cost: 31.99,
     price: 67.63,
-    suggestedretail: 71.85,
+    suggestedRetail: 71.85,
     color: 'black',
     style: 'mules',
-    size: 6,
-    dept: 'womens',
+    size: '6',
+    dept: 'Sporting Goods',
+    category: 'footwear',
     qty: 1
   },
   {
@@ -144,11 +153,12 @@ export const SHOES: Shoe[] = [
     image: '/assets/images/ginettesand.jpg',
     cost: 48.99,
     price: 98.99,
-    suggestedretail: 115.5,
+    suggestedRetail: 115.5,
     color: 'sand',
     style: 'mules',
-    size: 10,
-    dept: 'womens',
+    size: '10',
+    dept: 'Sporting Goods',
+    category: 'footwear',
     qty: 0
   },
   {
@@ -159,11 +169,12 @@ export const SHOES: Shoe[] = [
     image: '/assets/images/aldogold.jpg',
     cost: 88.99,
     price: 151.2,
-    suggestedretail: 168.75,
+    suggestedRetail: 168.75,
     color: 'gold',
     style: 'sandals',
-    size: 7,
-    dept: 'womens',
+    size: '7',
+    dept: 'Sporting Goods',
+    category: 'footwear',
     qty: 2
   },
   {
@@ -174,11 +185,12 @@ export const SHOES: Shoe[] = [
     image: '/assets/images/janissahblack.jpg',
     cost: 34.99,
     price: 79.0,
-    suggestedretail: 99.95,
+    suggestedRetail: 99.95,
     color: 'black',
     style: 'wedges',
-    size: 8,
-    dept: 'womens',
+    size: '8',
+    dept: 'Sporting Goods',
+    category: 'footwear',
     qty: 3
   },
   {
@@ -189,11 +201,12 @@ export const SHOES: Shoe[] = [
     image: '/assets/images/janissahorange.jpg',
     cost: 34.99,
     price: 79.0,
-    suggestedretail: 99.95,
+    suggestedRetail: 99.95,
     color: 'orange',
     style: 'wedges',
-    size: 9.5,
-    dept: 'womens',
+    size: '9.5',
+    dept: 'Sporting Goods',
+    category: 'footwear',
     qty: 2
   },
   {
@@ -204,11 +217,12 @@ export const SHOES: Shoe[] = [
     image: '/assets/images/janissahorange.jpg',
     cost: 34.99,
     price: 79.0,
-    suggestedretail: 99.95,
+    suggestedRetail: 99.95,
     color: 'orange',
     style: 'wedges',
-    size: 8,
-    dept: 'womens',
+    size: '8',
+    dept: 'Sporting Goods',
+    category: 'footwear',
     qty: 2
   },
   {
@@ -219,11 +233,12 @@ export const SHOES: Shoe[] = [
     image: '/assets/images/janissahtaupe.jpg',
     cost: 34.99,
     price: 79.0,
-    suggestedretail: 99.95,
+    suggestedRetail: 99.95,
     color: 'taupe',
     style: 'wedges',
-    size: 8,
-    dept: 'womens',
+    size: '8',
+    dept: 'Sporting Goods',
+    category: 'footwear',
     qty: 2
   },
   {
@@ -234,11 +249,12 @@ export const SHOES: Shoe[] = [
     image: '/assets/images/rainaagold.jpg',
     cost: 17.99,
     price: 39.99,
-    suggestedretail: 45.95,
+    suggestedRetail: 45.95,
     color: 'gold',
     style: 'heels',
-    size: 9.5,
-    dept: 'womens',
+    size: '9.5',
+    dept: 'Sporting Goods',
+    category: 'footwear',
     qty: 3
   },
   {
@@ -249,11 +265,12 @@ export const SHOES: Shoe[] = [
     image: '/assets/images/rainaagunmetal.jpg',
     cost: 24.99,
     price: 45.99,
-    suggestedretail: 59.95,
+    suggestedRetail: 59.95,
     color: 'gunmetal',
     style: 'heels',
-    size: 5.5,
-    dept: 'womens',
+    size: '5.5',
+    dept: 'Sporting Goods',
+    category: 'footwear',
     qty: 1
   },
   {
@@ -264,11 +281,12 @@ export const SHOES: Shoe[] = [
     image: '/assets/images/rashiwhite.jpg',
     cost: 94.99,
     price: 169.89,
-    suggestedretail: 184,
+    suggestedRetail: 184,
     color: 'white',
     style: 'sandals',
-    size: 7.5,
-    dept: 'womens',
+    size: '7.5',
+    dept: 'Sporting Goods',
+    category: 'footwear',
     qty: 1
   },
   {
@@ -279,11 +297,12 @@ export const SHOES: Shoe[] = [
     image: '/assets/images/rashigold.jpg',
     cost: 94.99,
     price: 169.89,
-    suggestedretail: 184,
+    suggestedRetail: 184,
     color: 'gold',
     style: 'sandals',
-    size: 10,
-    dept: 'womens',
+    size: '10',
+    dept: 'Sporting Goods',
+    category: 'footwear',
     qty: 1
   },
   {
@@ -294,11 +313,12 @@ export const SHOES: Shoe[] = [
     image: '/assets/images/dayanarablack.jpg',
     cost: 94.99,
     price: 169.89,
-    suggestedretail: 184,
+    suggestedRetail: 184,
     color: 'black',
     style: 'sandals',
-    size: 9.5,
-    dept: 'womens',
+    size: '9.5',
+    dept: 'Sporting Goods',
+    category: 'footwear',
     qty: 1
   },
   {
@@ -309,11 +329,12 @@ export const SHOES: Shoe[] = [
     image: '/assets/images/dayanarawhite.jpg',
     cost: 94.99,
     price: 169.89,
-    suggestedretail: 184,
+    suggestedRetail: 184,
     color: 'white',
     style: 'sandals',
-    size: 8,
-    dept: 'womens',
+    size: '8',
+    dept: 'Sporting Goods',
+    category: 'footwear',
     qty: 2
   },
   {
@@ -324,11 +345,12 @@ export const SHOES: Shoe[] = [
     image: '/assets/images/chloegosselin.jpg',
     cost: 500.75,
     price: 689.99,
-    suggestedretail: 748.5,
+    suggestedRetail: 748.5,
     color: 'black',
     style: 'heels',
-    size: 9,
-    dept: 'womens',
+    size: '9',
+    dept: 'Sporting Goods',
+    category: 'footwear',
     qty: 2
   },
   {
@@ -339,11 +361,12 @@ export const SHOES: Shoe[] = [
     image: '/assets/images/coachsage.jpg',
     cost: 142,
     price: 238.0,
-    suggestedretail: 245.65,
+    suggestedRetail: 245.65,
     color: 'sage',
     style: 'heels',
-    size: 6.5,
-    dept: 'womens',
+    size: '6.5',
+    dept: 'Sporting Goods',
+    category: 'footwear',
     qty: 1
   }
 ];

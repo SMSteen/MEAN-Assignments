@@ -2,17 +2,17 @@
   <h1>Product List</h1>
   <a [routerLink]="['new']" class="btn-primary">Add New</a>
   <div class="row">
-    <div *ngFor="let shoe of shoes" class="col-3 product">
-      <img *ngIf="!shoe.image" src="/assets/images/no-image.jpg" alt="no-image">
-      <img *ngIf="shoe.image" src="{{shoe.image}}" alt="{{shoe.item}}">
-      <h2>{{shoe.brand}}</h2>
-      <h1>{{shoe.item}}</h1>
-      <h1>{{shoe.price | currency }}</h1>
-      <h3>Size: {{shoe.size}}
-        <span class="spacer">|</span>Qty: {{shoe.qty}}</h3>
-      <a [routerLink]="['edit', shoe.id]" class="btn">Edit</a>
-      <button *ngIf="!shoe.qty" class="btn-delete" (click)="onDelete(shoes[0].id)">Remove Item</button>
-      <button *ngIf="shoe.qty > 0" class="btn-delete" disabled>Remove Item</button>
+    <div *ngFor="let product of products" class="col-3 product">
+      <img *ngIf="!product.image" src="/assets/images/no-image.jpg" alt="no-image">
+      <img *ngIf="product.image" src="{{product.image}}" alt="{{product.item}}">
+      <h2>{{product.brand}}</h2>
+      <h1>{{product.desc}}</h1>
+      <h1>{{product.price | currency }}</h1>
+      <h3>Size: {{product.size}}
+        <span class="spacer">|</span>Qty: {{product.qty}}</h3>
+      <a [routerLink]="['edit', product._id]" class="btn">Edit</a>
+      <button *ngIf="!product.qty" class="btn-delete" (click)="onDelete(products[0]._id)">Remove Item</button>
+      <button *ngIf="product.qty > 0" class="btn-delete" disabled>Remove Item</button>
     </div>
   </div>
 </div>

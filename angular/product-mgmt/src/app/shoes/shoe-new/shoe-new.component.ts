@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { Shoe } from '../../shoe';
+import { Product } from '../../product';
 import { ProductdataService } from '../../productdata.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { ProductdataService } from '../../productdata.service';
   styleUrls: ['./shoe-new.component.css']
 })
 export class ShoeNewComponent implements OnInit {
-  shoe: Shoe = new Shoe();
+  product: Product = new Product();
   errors: string[];
 
   constructor(
@@ -23,16 +23,16 @@ export class ShoeNewComponent implements OnInit {
 
   create(form: NgForm, event: Event) {
     event.preventDefault();
-    const { value: shoe } = form;
-    this.productService.addShoe(shoe).subscribe(
-      newShoe => {
-        console.log('shoe-new.component --> shoe successfully added');
+    const { value: product } = form;
+    this.productService.addProduct(product).subscribe(
+      newProduct => {
+        console.log('shoe-new.component --> product successfully added');
         form.reset();
         // redirect to shoe list
         this.router.navigateByUrl('/products');
       },
       error => {
-        console.log('shoe-new.component --> error creating shoe');
+        console.log('shoe-new.component --> error creating product');
         this.errors = error.error;
       }
     );
@@ -42,7 +42,4 @@ export class ShoeNewComponent implements OnInit {
     event.preventDefault();
     form.reset();
   }
-  // onCancel(){
-  //   this._router.navigateByUrl('/products');
-  // }
 }

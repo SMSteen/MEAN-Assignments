@@ -11,47 +11,82 @@
         </p>
       </div>
 
+      <label for="upc">UPC</label>
+      <input type="number" name="upc" required minlength="12" [(ngModel)]="product.upc" #upc="ngModel" [ngModelOptions]="{updateOn: 'blur'}">
+      <p *ngIf="upc.invalid && (upc.dirty || upc.touched)" class="text-error">
+        Please enter the 12-digit UPC code.
+      </p>
+
+      <label for="dept">Department</label>
+      <select name="dept" required [(ngModel)]="product.dept" #dept="ngModel">
+        <option value="not_selected" selected>Select department</option>
+        <option value="ammunition">Ammunition</option>
+        <option value="archery">Archery</option>
+        <option value="firearms">Firearms</option>
+        <option value="hunting">Hunting</option>
+        <option value="license">License</option>
+        <option value="marine">Marine</option>
+        <option value="nc tags">NC Tags</option>
+        <option value="sporting goods">Sporting Goods</option>
+      </select>
+      <p *ngIf="(dept.invalid || dept.value === 'not_selected') && (dept.dirty || dept.touched)" class="text-error">
+        Please select the department.
+      </p>
+
+      <label for="category">Category</label>
+      <select name="category" required [(ngModel)]="product.category" #category="ngModel">
+        <option value="accessories">Accessories</option>
+        <option value="apparel">Apparel</option>
+        <option value="boats">Boats</option>
+        <option value="footwear">Footwear</option>
+        <option value="labor">Labor</option>
+        <option value="optics">Optics</option>
+        <option value="outboard motors">Outboard Motors</option>
+        <option value="parts">Parts</option>
+        <option value="pistols">Pistols</option>
+        <option value="rifles">Rifles</option>
+        <option value="skiwear">Skiwear</option>
+        <option value="trailers">Trailers</option>
+      </select>
+      <p *ngIf="category.invalid && (category.dirty || category.touched)" class="text-error">
+        Please select the category.
+      </p>
+
       <label for="brand">Brand</label>
-      <input type="text" name="brand" required minlength="4" [(ngModel)]="shoe.brand" #brand="ngModel">
+      <input type="text" name="brand" required minlength="4" [(ngModel)]="product.brand" #brand="ngModel">
       <p *ngIf="brand.invalid && (brand.dirty || brand.touched)" class="text-error">
         Please enter the brand name.
       </p>
 
-      <label for="item">Item</label>
-      <input type="text" name="item" required minlength="2" [(ngModel)]="shoe.item" #item="ngModel">
-      <p *ngIf="item.invalid && (item.dirty || item.touched)" class="text-error">
-        Please enter the item name.
+      <label for="desc">Item Description</label>
+      <input type="text" name="desc" required minlength="2" [(ngModel)]="product.desc" #desc="ngModel" [ngModelOptions]="{updateOn: 'blur'}">
+      <p *ngIf="desc.invalid && (desc.dirty || desc.touched)" class="text-error">
+        Please enter the name or a brief description of the item.
       </p>
 
       <label for="cost">Cost</label>
-      <input type="number" name="cost" step="0.01" required [(ngModel)]="shoe.cost" #cost="ngModel" [ngModelOptions]="{updateOn: 'blur'}">
+      <input type="number" name="cost" step="0.01" required [(ngModel)]="product.cost" #cost="ngModel" [ngModelOptions]="{updateOn: 'blur'}">
       <p *ngIf="cost.invalid && (cost.dirty || cost.touched)" class="text-error">
         Please enter the cost for this item.
       </p>
 
-      <label for="suggestedretail">Suggested Retail Price</label>
-      <input type="number" name="suggestedretail" step="0.01" required [(ngModel)]="shoe.suggestedretail" #suggestedretail="ngModel"
-        [ngModelOptions]="{updateOn: 'blur'}">
-      <p *ngIf="suggestedretail.invalid && (suggestedretail.dirty || suggestedretail.touched)" class="text-error">
-        Please enter the suggestsed retail price for this item.
+      <label for="price">Price</label>
+      <input type="number" name="price" required step=".01" [(ngModel)]="product.price" #price="ngModel" [ngModelOptions]="{updateOn: 'blur'}">
+      <p *ngIf="price.invalid && (price.dirty || price.touched)" class="text-error">
+        Please enter the selling price of this item.
       </p>
 
-      <label for="price">Price</label>
-      <input type="number" name="price" step="0.01" required [(ngModel)]="shoe.price" #price="ngModel">
-      <p *ngIf="price.invalid && (price.dirty || price.touched)" class="text-error">
-        Please enter the price for this item.
-      </p>
+      <label for="suggestedRetail">Suggested Retail Price</label>
+      <input type="number" name="suggestedRetail" step="0.01" required [(ngModel)]="product.suggestedRetail" #suggestedretail="ngModel"
+        [ngModelOptions]="{updateOn: 'blur'}">
 
       <label for="color">Color</label>
-      <input type="text" name="color" required [(ngModel)]="shoe.color" #color="ngModel">
-      <p *ngIf="color.invalid && (color.dirty || color.touched)" class="text-error">
-        Please enter the color of this item.
-      </p>
+      <input type="text" name="color" required [(ngModel)]="product.color" #color="ngModel">
 
       <label for="style">Style</label>
-      <select name="style" required [(ngModel)]="shoe.style" #style="ngModel">
+      <select name="style" required [(ngModel)]="product.style" #style="ngModel">
         <option value="not_selected">Select style</option>
-        <option value="boatshoes">Boat Shoes</option>
+        <option value="boatshoes">Boatshoes</option>
         <option value="boots">Boots</option>
         <option value="mules">Clogs & Mules</option>
         <option value="loafers">Loafers</option>
@@ -61,36 +96,28 @@
         <option value="sneakers">Sneakers & Athletic</option>
         <option value="wedges">Wedges</option>
       </select>
-      <p *ngIf="(style.invalid || style.value === 'not_selected') && (style.dirty || style.touched)" class="text-error">
-        Please select the style.
-      </p>
 
-      <label for="dept">Department</label>
-      <select name="dept" required [(ngModel)]="shoe.dept" #dept="ngModel">
-        <option value="not_selected" selected>Select department</option>
-        <option value="womens">Women's</option>
-        <option value="mens">Men's</option>
-        <option value="kids">Kid's</option>
-      </select>
-      <p *ngIf="dept.value === 'not_selected' && (dept.dirty || dept.touched)" class="text-error">
-        Please select the department.
+      <label for="size">Size</label>
+      <input type="text" name="size" [(ngModel)]="product.size" #size="ngModel" [ngModelOptions]="{updateOn: 'blur'}">
+
+      <label for="qty">Quantity</label>
+      <input type="number" name="qty" required min="0" [(ngModel)]="product.qty" #qty="ngModel" [ngModelOptions]="{updateOn: 'blur'}">
+      <p *ngIf="qty.invalid && (qty.dirty || qty.touched)" class="text-error">
+        Please enter the quantity on hand for this item.
       </p>
 
       <label for="image">Image URL</label>
-      <input type="text" name="image" [(ngModel)]="shoe.image" #image="ngModel">
+      <input type="text" name="image" [(ngModel)]="product.image" #image="ngModel">
 
-      <label for="qty">Quantity</label>
-      <input type="number" name="qty" [(ngModel)]="shoe.qty" #qty="ngModel">
-
-      <button type="submit" *ngIf="!form.valid || (dept.value === 'not_selected' || style.value === 'not_selected')" disabled>Save</button>
-      <button (click)="onSubmit(shoe)" type="submit" *ngIf="form.valid && (dept.value !== 'not_selected' && style.value !== 'not_selected')">Save</button>
+      <button type="submit" *ngIf="!chgprod.valid || (dept.value === 'not_selected' || style.value === 'not_selected')" disabled>Save</button>
+      <button (click)="onSubmit(product)" type="submit" *ngIf="chgprod.valid && (dept.value !== 'not_selected' && style.value !== 'not_selected')">Save</button>
     </form>
 
     <div class="visual-display">
-      <img *ngIf="shoe.image" src="{{shoe.image}}" alt="{{shoe.item}}">
-      <img *ngIf="!shoe.image" src="/assets/images/no-image.jpg" alt="no image">
-      <button *ngIf="shoe.qty > 0" class="btn-primary" disabled>Remove Item</button>
-      <button *ngIf="!shoe.qty" class="btn-primary" (click)="onDelete(shoe.id)">Remove Item</button>
+      <img *ngIf="!product.image" src="/assets/images/no-image.jpg" alt="no image">
+      <img *ngIf="product.image" src="{{product.image}}" alt="{{product.item}}">
+      <button *ngIf="product.qty > 0" class="btn-primary" disabled>Remove Item</button>
+      <button *ngIf="!product.qty" class="btn-primary" (click)="onDelete(product._id)">Remove Item</button>
     </div>
   </div>
 </div>

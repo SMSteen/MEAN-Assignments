@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 
-import { Shoe } from '../../shoe';
+import { Product } from '../../product';
 import { ProductdataService } from '../../productdata.service';
 
 @Component({
@@ -14,7 +14,7 @@ import { ProductdataService } from '../../productdata.service';
 export class ShoeDetailsComponent implements OnInit {
   // id: number;
   // shoeID: string;
-  shoe: Shoe;
+  product: Product;
   errors: string[];
 
   constructor(
@@ -26,12 +26,14 @@ export class ShoeDetailsComponent implements OnInit {
   ngOnInit() {
     // get the id of the selected product passed through params
     this.route.paramMap
-      .pipe(switchMap(params => this.productService.getShoe(params.get('id'))))
+      .pipe(
+        switchMap(params => this.productService.getProduct(params.get('id')))
+      )
 
       .subscribe(
-        shoe => {
-          console.log('shoe-details.component --> got the shoe', shoe);
-          this.shoe = shoe;
+        product => {
+          console.log('shoe-details.component --> got the shoe', product);
+          this.product = product;
         },
         error => {
           console.log('shoe-details.component --> error getting shoe');
@@ -40,12 +42,12 @@ export class ShoeDetailsComponent implements OnInit {
       );
   }
 
-  onSubmit(shoe: Shoe) {
-    this.productService.updateShoe(shoe).subscribe(
-      updatedShoe => {
+  onSubmit(prod: Product) {
+    this.productService.updateProduct(prod).subscribe(
+      updatedProd => {
         console.log(
           'shoe-details.component --> successfully updated shoe',
-          updatedShoe
+          updatedProd
         );
         // redirect to shoe list
         this.router.navigateByUrl('/products');
@@ -58,11 +60,11 @@ export class ShoeDetailsComponent implements OnInit {
   }
 
   onDelete(id) {
-    this.productService.deleteShoe(id).subscribe(
-      deletedShoe => {
+    this.productService.deleteProduct(id).subscribe(
+      deletedProd => {
         console.log(
           'shoe-details.component --> succesfully deleted shoe',
-          deletedShoe
+          deletedProd
         );
         // redirect to product list
         this.router.navigateByUrl('/products');

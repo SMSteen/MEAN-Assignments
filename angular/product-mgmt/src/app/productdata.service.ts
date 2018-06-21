@@ -1,70 +1,43 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import {
   FileUploader,
   FileSelectDirective
 } from 'ng2-file-upload/ng2-file-upload';
 
-import { Shoe } from '../app/shoe';
-// import { SHOES } from '../app/data/shoe-data';
+import { Product } from '../app/product';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductdataService {
-  // shoeData$ = new BehaviorSubject<Shoe[]>(SHOES);
-  baseURL = '/api/shoes/';
-
-  public uploader: FileUploader = new FileUploader({
-    url: this.baseURL,
-    itemAlias: 'photo'
-  });
+  baseURL = '/api/products/';
 
   constructor(private http: HttpClient) {}
 
-  getShoes(): Observable<Shoe[]> {
-    console.log('getting all shoes in service');
-    return this.http.get<Shoe[]>(this.baseURL);
+  getProducts(): Observable<Product[]> {
+    console.log('getting all products in service');
+    return this.http.get<Product[]>(this.baseURL);
   }
 
-  addShoe(newShoe: Shoe): Observable<Shoe> {
-    console.log('adding a shoe in service:', newShoe);
-    return this.http.post<Shoe>(this.baseURL, newShoe);
+  addProduct(newProd: Product): Observable<Product> {
+    console.log('adding a product in service:', newProd);
+    return this.http.post<Product>(this.baseURL, newProd);
   }
 
-  getShoe(shoe_id): Observable<Shoe> {
-    console.log('getting a single shoe in service', shoe_id);
-    return this.http.get<Shoe>(this.baseURL + shoe_id);
+  getProduct(prod_id): Observable<Product> {
+    console.log('getting a single product in service', prod_id);
+    return this.http.get<Product>(this.baseURL + prod_id);
   }
 
-  updateShoe(shoe): Observable<Shoe> {
-    console.log('updating a shoe in service', shoe._id);
-    return this.http.put<Shoe>(this.baseURL + shoe._id, shoe);
+  updateProduct(product): Observable<Product> {
+    console.log('updating a product in service', product._id);
+    return this.http.put<Product>(this.baseURL + product._id, product);
   }
 
-  deleteShoe(shoe_id): Observable<Shoe> {
-    console.log('deleting a shoe in service', shoe_id);
-    return this.http.delete<Shoe>(this.baseURL + shoe_id);
+  deleteProduct(prod_id): Observable<Product> {
+    console.log('deleting a product in service', prod_id);
+    return this.http.delete<Product>(this.baseURL + prod_id);
   }
-
-  // addShoe(shoe: Shoe) {
-  //   const shoes = this.shoeData$.getValue();
-  //   // add the new prodcut
-  //   shoes.push(shoe);
-  //   this.shoeData$.next(shoes);
-  // }
-
-  // deleteShoe(id: number) {
-  //   const shoes = this.shoeData$.getValue();
-  //   // find the matching Shoe
-  //   for (const [index, shoe] of shoes.entries() as any) {
-  //     if (shoe._id === id) {
-  //       // remove the Shoe
-  //       shoes.splice(index, 1);
-  //       this.shoeData$.next(shoes);
-  //       return;
-  //     }
-  //   }
-  // }
 }
