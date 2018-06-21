@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductdataService } from '../../productdata.service';
 
+import { ProductdataService } from '../../productdata.service';
 import { Shoe } from '../../shoe';
-import { SHOES } from '../../data/shoe-data';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-shoe-list',
@@ -11,17 +9,37 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./shoe-list.component.css']
 })
 export class ShoeListComponent implements OnInit {
-  id: number;
   shoes: Shoe[] = [];
+  errorMessage: string;
 
-  constructor(private _productdataService: ProductdataService, private _route: ActivatedRoute) { }
+  constructor(private productService: ProductdataService) {}
 
-  ngOnInit() {    
-    this._productdataService.shoeData$
-      .subscribe(shoes => this.shoes = shoes);
+  ngOnInit() {
+    console.log('shoe-list.component: getting products');
+    this.productService.getShoes().subscribe(
+      shoes => {
+        this.shoes = shoes;
+      },
+      error => {
+        this.errorMessage = error.error;
+      }
+    );
   }
 
-  onDelete(id){
-    this._productdataService.deleteShoe(id);
+  onDelete(id) {
+    this.productService.deleteShoe(id).subscribe(
+      deletedShoe => {
+        console.log(
+          'shoe-list.component --> successfully deleted shoe',
+          deletedShoe
+        );
+        this.shoes = this.shoes.filter(
+          delShoe => delShoe._id !== deletedShoe._id
+        );
+      },
+      error => {
+        this.errorMessage = error.error;
+      }
+    );
   }
 }

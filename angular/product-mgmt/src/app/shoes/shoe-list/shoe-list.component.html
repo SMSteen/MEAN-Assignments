@@ -3,13 +3,16 @@
   <a [routerLink]="['new']" class="btn-primary">Add New</a>
   <div class="row">
     <div *ngFor="let shoe of shoes" class="col-3 product">
-      <img src="{{shoe.image}}" alt="{{shoe.item}}">
+      <img *ngIf="!shoe.image" src="/assets/images/no-image.jpg" alt="no-image">
+      <img *ngIf="shoe.image" src="{{shoe.image}}" alt="{{shoe.item}}">
       <h2>{{shoe.brand}}</h2>
       <h1>{{shoe.item}}</h1>
       <h1>{{shoe.price | currency }}</h1>
-      <h3>Size: {{shoe.size}}<span class="spacer">|</span>Qty: {{shoe.qty}}</h3>
+      <h3>Size: {{shoe.size}}
+        <span class="spacer">|</span>Qty: {{shoe.qty}}</h3>
       <a [routerLink]="['edit', shoe.id]" class="btn">Edit</a>
-      <button class="btn-delete" (click)="onDelete(shoe.id)">Remove</button>
+      <button *ngIf="!shoe.qty" class="btn-delete" (click)="onDelete(shoes[0].id)">Remove Item</button>
+      <button *ngIf="shoe.qty > 0" class="btn-delete" disabled>Remove Item</button>
     </div>
   </div>
 </div>

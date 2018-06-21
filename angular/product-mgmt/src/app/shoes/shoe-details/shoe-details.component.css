@@ -1,96 +1,30 @@
-h1{
-    display: inline-block;
-    width: 50%;
+h1 {
+  display: inline-block;
+  width: 50%;
 }
-.btn-primary{
-    display: inline-block;
-    margin: 0 10px;
-}
-form{
-    display: inline-block;
-    width: 55%;
-    padding: 20px;
-    box-shadow: 3px 3px 3px 3px #808080;
-    margin-bottom: 15px;
-}
-fieldset {
-    border: 1px dotted #373e62 !important;
-    padding: 0 1.4em 1.4em 1.4em !important;
-    margin: 0 0 1.5em 0 !important;
-    -webkit-box-shadow:  0px 0px 0px 0px #000;
-    box-shadow:  0px 0px 0px 0px #000;
-}
-legend{
-    width:auto; /* Or inherit */
-    padding:0 10px; /* To give a bit of padding on the left and right */
-    border-bottom:none;
-    color: #373e62;
-    font-style: italic;
-    font-size: 14pt;
-}
-input, select{
-    margin: 5px 0px;
-    font-style: italic;
-    font-weight: bold;
-    color: #373e62;
-    width: 65%;
-    padding: 5px;
-}
-select{
-    width: 67%;
-}
-form label{
-    text-align: left;
-    margin-right: 5px;
-    width: 25%;
-    display: inline-block;
-}
-button{
-    padding: 10px;
-    background-color: #343A5C;
-    border-color: #343A5C;
-    border-radius: 10px;
-    color: white;
-    font-weight: bold;
-    box-shadow: 1px 1px 1px #252525;
-    display: block;
-    text-decoration: none;
-    width: fit-content;
-    cursor: pointer;
-}
-button:disabled{
-    background-color: #808080;
-    color: whitesmoke;
-    border: none;
-    font-weight: inherit;
-    opacity: .4;
-    margin: 0 auto;
+.btn-primary {
+  display: inline-block;
+  margin: 0 10px;
 }
 form button {
-    margin: 0 auto;
+  margin: 0 auto;
 }
-.text-error{
-    color: red;
-    font-weight: bold;
-    width: 65%;
-    margin: 0 0 0 30%;
+.visual-display {
+  display: inline-block;
+  vertical-align: top;
+  width: 35%;
+  margin: 5% 0 0 5%;
 }
-.visual-display{
-    display: inline-block;
-    vertical-align: top;
-    width: 35%;
-    margin: 5% 0 0 5%;
+img {
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+  /* vertical-align: top; */
+  padding: 20px;
+  border: 0.5px dotted #343a5c;
+  border-radius: 10px;
 }
-img{
-    display: block;
-    width: 50%;
-    margin: 0 auto;
-    /* vertical-align: top; */
-    padding: 20px;
-    border: .5px dotted #343A5C;
-    border-radius: 10px;
-}
-.visual-display button{
-    display: block;
-    margin: 10px auto;
+.visual-display button {
+  display: block;
+  margin: 10px auto;
 }

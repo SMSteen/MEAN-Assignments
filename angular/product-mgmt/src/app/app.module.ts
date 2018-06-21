@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { FileSelectDirective } from 'ng2-file-upload';
 
 import { AppRoutingModule } from './app-routing.module';
 import { ProductdataService } from './productdata.service';
@@ -18,13 +20,10 @@ import { HomeComponent } from './home/home.component';
     ShoeNewComponent,
     ShoeDetailsComponent,
     HomeComponent,
+    FileSelectDirective
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [ProductdataService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
