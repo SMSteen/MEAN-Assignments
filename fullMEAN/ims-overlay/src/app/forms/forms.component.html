@@ -1,0 +1,16 @@
+<div class="container">
+  <p>
+    <strong>{{ formTitle }}</strong>
+  </p>
+
+  <div class="errors">
+    <p *ngFor="let error of errors" class="text-error">
+      {{ error }}
+    </p>
+  </div>
+
+  <app-form-display [product]='product' [formType]='formType' [productForm]='productForm' [deptList]='deptList' [catList]='catList'
+    (sendData)="submit($event)" (sendFile)="submit($event)"></app-form-display>
+
+
+</div>

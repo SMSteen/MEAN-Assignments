@@ -1,0 +1,112 @@
+<form [formGroup]="productForm" enctype="multipart/form-data">
+
+  <div>
+    <label for="upc">UPC</label>
+    <input type="number" formControlName="upc">
+
+    <p *ngIf="productForm.controls['upc'].errors && !productForm.controls['upc'].pristine" class="text-error">
+      Please enter the 12-digit UPC code.
+    </p>
+  </div>
+
+  <div>
+    <label for="dept">Department</label>
+    <select name="dept" formControlName="dept">
+      <option *ngFor="let option of deptList" [value]="option"> {{option | titlecase}}
+      </option>
+    </select>
+
+    <p *ngIf="productForm.controls['dept'].errors && !productForm.controls['dept'].pristine" class="text-error">
+      Please select the department.
+    </p>
+  </div>
+
+  <div>
+    <label for="category">Category</label>
+    <select name="category" formControlName="category">
+      <option *ngFor="let option of catList" [value]="option"> {{option | titlecase}}
+      </option>
+    </select>
+
+    <p *ngIf="productForm.controls['category'].errors && !productForm.controls['category'].pristine" class="text-error">
+      Please select the category.
+    </p>
+  </div>
+
+  <div>
+    <label for="brand">Brand</label>
+    <input type="text" formControlName="brand">
+
+    <p *ngIf="productForm.controls['brand'].errors && !productForm.controls['brand'].pristine" class="text-error">
+      Please enter the brand name.
+    </p>
+  </div>
+
+  <div>
+    <label for="desc">Item</label>
+    <input type="text" formControlName="desc">
+
+    <p *ngIf="productForm.controls['desc'].errors && !productForm.controls['desc'].pristine" class="text-error">
+      Please enter the name or a brief description of the item.
+    </p>
+  </div>
+
+  <div>
+    <label for="cost">Cost</label>
+    <input type="number" formControlName="cost" step=".01">
+
+    <p *ngIf="productForm.controls['cost'].errors && !productForm.controls['cost'].pristine" class="text-error">
+      Please enter the cost for this item.
+    </p>
+  </div>
+
+  <div>
+    <label for="price">Price</label>
+    <input type="number" formControlName="price" step=".01">
+
+    <p *ngIf="productForm.controls['price'].errors && !productForm.controls['price'].pristine" class="text-error">
+      Please enter the selling price of this item.
+    </p>
+  </div>
+
+  <div>
+    <label for="suggestedRetail">Suggested Retail Price</label>
+    <input type="number" formControlName="suggestedRetail" step=".01">
+  </div>
+
+  <div>
+    <label for="color">color</label>
+    <input type="text" formControlName="color">
+  </div>
+
+  <div>
+    <label for="style">Style</label>
+    <input type="text" formControlName="style">
+  </div>
+
+  <div>
+    <label for="size">Size</label>
+    <input type="text" formControlName="size">
+  </div>
+
+  <div>
+    <label for="qty">Quantity</label>
+    <input type="number" formControlName="qty">
+
+    <p *ngIf="productForm.controls['qty'].errors && !productForm.controls['qty'].pristine" class="text-error">
+      Please enter the quantity on hand for this item.
+    </p>
+  </div>
+
+  <div>
+    <label for="image">Upload Image</label>
+    <input type="file" (change)="onFileChanged($event)" formControlName="image">
+  </div>
+
+  <div class="button-container">
+    <button [disabled]=!productForm.valid (click)="onSubmit(productForm.value, $event)">{{ formType }}</button>
+    <a *ngIf="formType === 'Edit Product'" class="btn-primary" routerLink="/products/{{product?._id}}">Cancel</a>
+    <a *ngIf="formType === 'Add Product'" class="btn-primary" routerLink="/products">Cancel</a>
+  </div>
+
+</form>

@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+h1:nth-of-type(1) {
+  margin: 0.5em 0.2em;
+  display: inline-block;
+  width: fit-content;
+}
+.btn-primary {
+  padding: 10px;
+  background-color: #343a5c;
+  border-color: #343a5c;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  box-shadow: 2px 2px 2px #808080;
+  display: inline-block;
+  text-decoration: none;
+  margin-left: 1%;
+  vertical-align: super;
+}
+.product {
+  display: inline-block;
+  width: 23%;
+  padding: 5px;
+  border: 1px solid #808080;
+  margin: 5px;
+  background-color: #fbfaf9;
+  text-align: center;
+}
+@media only screen and (max-width: 1024px) {
+  .product {
+    width: 45%;
+  }
+}
+@media only screen and (max-width: 758px) {
+  .product {
+    width: 90%;
+  }
+}
+.product img {
+  width: 50%;
+  max-height: 125px;
+  max-width: 125px;
+}
+.product img[alt='no-image'] {
+  height: 125px;
+}
+.product h1 {
+  color: #535c93;
+  margin: 0;
+}
+.spacer {
+  margin: 5px 10px;
+}
+a.btn,
+.btn-delete {
+  display: block;
+  margin: 10px auto;
+  width: 47%;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: buttonface;
+  border: 2px solid #004d1a;
+  color: #004d1a;
+  font-weight: bold;
+  font-size: 1.3em;
+  box-shadow: 2px 2px 2px #808080;
+  text-decoration: none;
+}
+.btn-delete {
+  color: #990000;
+  border-color: #990000;
+  font-size: 1.2em;
+  padding: 7px;
+  width: 50%;
+  cursor: pointer;
+}
