@@ -21,6 +21,7 @@ export class FormsComponent implements OnInit {
   productID: string;
   errors: string[];
   productForm: FormGroup;
+  copy: boolean;
   private deptList: string[] = [
     'ammunition',
     'archery',
@@ -35,6 +36,7 @@ export class FormsComponent implements OnInit {
     'accessories',
     'apparel',
     'boats',
+    'bows',
     'footwear',
     'labor',
     'optics',
@@ -73,67 +75,92 @@ export class FormsComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
-    this.route.paramMap.subscribe(
-      params => (this.productID = params.get('id'))
-    );
-    if (this.productID) {
-      console.log('editing existing product, get the product');
-      this.formType = 'Edit Product';
-      this.prodService.getProduct(this.productID).subscribe(
-        product => {
-          console.log(
-            'forms.component --> got the product, load into form',
-            product
-          );
-          this.product = product;
-          // temporary until file upload feature resolved to prevent errors
-          this.product.image = '';
-          this.productForm.patchValue(this.product);
-        },
-        error => {
-          console.log('forms.component --> error retrieving product');
-          this.errors = error.error;
-        }
-      );
-    } else {
-      this.formType = 'Add Product';
-      this.product = new Product();
-    }
+    // determine if adding a new product
+    this.route.url.subscribe(url => {
+      if (url[0].path === 'new') {
+        // adding new product from scratch
+        this.formType = 'Add Product';
+        this.product = new Product();
+      } else {
+        // working with existing data, save productID
+        this.productID = url[0].path;
+        // get product information
+        this.prodService.getProduct(this.productID).subscribe(
+          product => {
+            console.log(
+              'forms.component --> got the product, load into form',
+              product
+            );
+            if (url[1].path !== 'copy') {
+              console.log(url);
+              console.log('editing existing product');
+              // editing an existing product;
+              this.formType = 'Edit Product';
+              this.product = product;
+              this.product.image = '';
+              this.productForm.patchValue(this.product); // populate form with existing data
+            } else {
+              // adding a new product but copying some fields from existing product
+              this.copy = true;
+              this.formType = 'Add Product';
+              this.product = new Product();
+              // collect values desired for copy
+              this.product.brand = product.brand;
+              this.product.category = product.category;
+              this.product.color = product.color;
+              this.product.cost = product.cost;
+              this.product.dept = product.dept;
+              this.product.desc = product.desc;
+              this.product.price = product.price;
+              this.product.size = product.size;
+              this.product.style = product.style;
+              this.product.suggestedRetail = product.suggestedRetail;
+              this.productForm.patchValue(this.product); // populate form with existing data
+            }
+          },
+          error => {
+            console.log('forms.component --> error retrieving product');
+            this.errors = error.error;
+          }
+        );
+      }
+    });
   }
 
   submit(formData) {
     console.log('in form.component --> formData', formData);
     const cleanData = Object.assign({}, this.product, formData);
     console.log('form.component cleanData', cleanData);
-    // if (this.formType === 'Add Product') {
-    //   this.prodService.addProduct(cleanData).subscribe(
-    //     newProduct => {
-    //       console.log(
-    //         'form.component --> successfully added product',
-    //         newProduct
-    //       );
-    //       this.productForm.reset();
-    //       this.router.navigateByUrl('/products');
-    //     },
-    //     error => {
-    //       console.log('form.component --> error creating product');
-    //       this.errors = error.error;
-    //     }
-    //   );
-    // } else {
-    //   this.prodService.updateProduct(cleanData).subscribe(
-    //     updatedProduct => {
-    //       console.log(
-    //         'form.component component --> successfully updated product',
-    //         updatedProduct
-    //       );
-    //       this.router.navigateByUrl(`/products/${updatedProduct._id}`);
-    //     },
-    //     error => {
-    //       console.log('form.component component --> error updating product');
-    //       this.errors = error.error;
-    //     }
-    //   );
-    // }
+    console.log(this.formType);
+    if (this.formType === 'Add Product') {
+      this.prodService.addProduct(cleanData).subscribe(
+        newProduct => {
+          console.log(
+            'form.component --> successfully added product',
+            newProduct
+          );
+          this.productForm.reset();
+          this.router.navigateByUrl('/products');
+        },
+        error => {
+          console.log('form.component --> error creating product');
+          this.errors = error.error;
+        }
+      );
+    } else {
+      this.prodService.updateProduct(cleanData).subscribe(
+        updatedProduct => {
+          console.log(
+            'form.component component --> successfully updated product',
+            updatedProduct
+          );
+          this.router.navigateByUrl(`/products/${updatedProduct._id}`);
+        },
+        error => {
+          console.log('form.component component --> error updating product');
+          this.errors = error.error;
+        }
+      );
+    }
   }
 }

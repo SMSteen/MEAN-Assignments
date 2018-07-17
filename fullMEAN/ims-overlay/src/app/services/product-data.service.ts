@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Product } from '../product';
@@ -19,7 +19,15 @@ export class ProductDataService {
 
   addProduct(newProd: Product): Observable<Product> {
     console.log('adding a product in service:', newProd);
-    return this.http.post<Product>(this.baseURL, newProd);
+    const formData: FormData = new FormData();
+    // append form input values to FormData for backend use with multer
+    for (const field in newProd) {
+      if (newProd.hasOwnProperty(field)) {
+        formData.append(field, newProd[field]);
+      }
+    }
+    console.log(formData);
+    return this.http.post<Product>(this.baseURL, formData);
   }
 
   getProduct(prod_id): Observable<Product> {
@@ -28,8 +36,16 @@ export class ProductDataService {
   }
 
   updateProduct(product): Observable<Product> {
+    const formData: FormData = new FormData();
+    // append form input values to FormData for backend use with multer
+    for (const field in product) {
+      if (product.hasOwnProperty(field)) {
+        console.log('field name', field, 'field value', product[field]);
+        formData.append(field, product[field]);
+      }
+    }
     console.log('updating a product in service', product._id);
-    return this.http.put<Product>(this.baseURL + product._id, product);
+    return this.http.put<Product>(this.baseURL + product._id, formData);
   }
 
   deleteProduct(prod_id): Observable<Product> {

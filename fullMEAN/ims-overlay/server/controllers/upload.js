@@ -1,23 +1,13 @@
 const multer = require('multer');
 const path = require('path');
-// const UPLOAD_PATH = path.resolve(
-//   __dirname,
-//   path.join(__dirname, '/dist/pet-shelter')
-// );
 
 // set up storage
 const storage = multer.diskStorage({
   destination: function(request, file, cb) {
-    cb(null, 'dist/ims-overlay/assets');
+    cb(null, './public/uploads/');
   },
   filename: function(request, file, cb) {
-    cb(
-      null,
-      file.originalname +
-        Date.now().toString() +
-        '-' +
-        path.extname(file.originalname)
-    );
+    cb(null, Date.now().toString() + '-' + file.originalname);
   }
 });
 
@@ -35,11 +25,12 @@ const validateFile = function(file, cb) {
   const extension = allowedFileTypes.test(
     path.extname(file.originalname).toLowerCase()
   );
-  const mimeType = allowedFileTypes.test(file.mimeType);
+  const mimeType = allowedFileTypes.test(file.mimetype);
   if (extension && mimeType) {
     //file is a photo, proceed
     return cb(null, true);
   } else {
+    //throw error, file unacceptable
     cb('Only images are allowed (JPG, PNG, BMP, GIF).');
   }
 };

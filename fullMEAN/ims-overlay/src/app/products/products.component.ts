@@ -28,20 +28,19 @@ export class ProductsComponent implements OnInit {
 
   onDelete(productID) {
     console.log('forms.component, child wants to delete', productID);
-    //   this.prodService.deleteProduct(id).subscribe(
-    //     deletedProd => {
-    //       console.log(
-    //         'products.component --> successfully deleted product',
-    //         deletedProd
-    //       );
-    //       this.products = this.products.filter(
-    //         delProd => delProd._id !== deletedProd._id
-    //       );
-    //     },
-    //     error => {
-    //       this.errorMessage = error.error;
-    //     }
-    //   );
-    // }
+    this.prodService.deleteProduct(productID).subscribe(
+      deletedProd => {
+        console.log(
+          'products.component --> successfully deleted product',
+          deletedProd
+        );
+        this.products = this.products.filter(
+          delProd => delProd._id !== deletedProd._id
+        );
+      },
+      error => {
+        this.errorMessage = error.error;
+      }
+    );
   }
 }

@@ -1,15 +1,18 @@
 const Product = require('mongoose').model('Product');
+const upload = require('../controllers/upload');
 
 module.exports = {
   index(request, response) {
     Product.find({})
-      .sort({ brand: 1 })
+      .sort({ dept: 1, brand: 1 })
       .then(products => response.json(products))
       .catch(console.log);
   },
-
   create(request, response) {
     console.log('product-controller --> adding product to database');
+    if (request.file) {
+      request.body.image = '/public/uploads/' + request.file.filename;
+    }
     Product.create(request.body)
       .then(product => {
         console.log(
@@ -21,7 +24,7 @@ module.exports = {
       .catch(error => {
         console.log(error);
         response
-          .status(403)
+          .status(400)
           .json(
             Object.keys(error.errors).map(key => error.errors[key].message)
           );
@@ -37,6 +40,10 @@ module.exports = {
 
   update(request, response) {
     console.log('product-controller --> updating product in database');
+    if (request.file) {
+      ('product-controller, got an image');
+      request.body.image = '/public/uploads/' + request.file.filename;
+    }
     Product.findByIdAndUpdate(request.params.productID, request.body, {
       new: true
     })

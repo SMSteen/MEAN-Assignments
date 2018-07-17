@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from '../../product';
-import { EventEmitter } from 'events';
 
 @Component({
   selector: 'app-product-list',
@@ -10,12 +9,14 @@ import { EventEmitter } from 'events';
 export class ProductListComponent implements OnInit {
   @Input() products: Product[];
   @Output() sendID = new EventEmitter();
+  @Output() sendCopy = new EventEmitter();
 
   constructor() {}
 
   ngOnInit() {}
 
-  onDelete(productID, event: Event) {
+  onDelete(productID) {
+    console.log(productID);
     this.sendID.emit(productID);
   }
 }

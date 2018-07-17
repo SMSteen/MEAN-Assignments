@@ -34,6 +34,11 @@ const routes: Routes = [
         path: ':id/edit',
         component: FormsComponent,
         pathMatch: 'full'
+      },
+      {
+        path: ':id/copy',
+        component: FormsComponent,
+        pathMatch: 'full'
       }
     ]
   }

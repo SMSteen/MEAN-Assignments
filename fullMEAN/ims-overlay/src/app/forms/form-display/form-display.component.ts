@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { combineLatest, of } from 'rxjs';
+import { map, take } from 'rxjs/operators';
 
 import { Product } from '../../product';
 
@@ -31,15 +33,19 @@ export class FormDisplayComponent implements OnInit {
   onSubmit(form: FormData, event: Event) {
     event.preventDefault();
 
-    // form.append('myFile', fileInputElement.files[0]);  // this doesn't work, .append is not a "method" :(
-    // console.log(formElement);
-    console.log('form data to include file', this.fileToUpload);
-    console.log(
-      'in form-display.component --> form does not include file',
-      form
-    );
-    // How can these values be emitted TOGETHER?
-    this.sendFile.emit(this.fileToUpload);
-    this.sendData.emit(form);
+    // convert last values of file and formdata to observable
+    combineLatest(of(this.fileToUpload), of(form))
+      // map observable created above into Product class
+      .pipe(
+        map(([image, product]) => {
+          return ({ ...product, image } as any) as Product;
+        }),
+        take(1)
+      )
+      // subscribe to final result (product) and emit to parent
+      .subscribe(product => {
+        console.log('product from combine', product);
+        this.sendData.emit(product);
+      });
   }
 }

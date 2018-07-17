@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const validator = require('validator');
+const uniqueValidator = require('mongoose-unique-validator');
 
 const productSchema = new Schema(
   {
@@ -9,6 +10,7 @@ const productSchema = new Schema(
       min: 000000000000,
       max: 999999999999,
       trim: true,
+      // unique: true,
       required: [true, 'Please enter the UPC code for this item.']
     },
     dept: {
@@ -21,7 +23,7 @@ const productSchema = new Schema(
         'hunting',
         'license',
         'marine',
-        'nc tags',
+        'tags',
         'sporting goods'
       ],
       default: 'sporting goods'
@@ -33,6 +35,7 @@ const productSchema = new Schema(
         'accessories',
         'apparel',
         'boats',
+        'bows',
         'footwear',
         'labor',
         'optics',
@@ -48,11 +51,13 @@ const productSchema = new Schema(
     brand: {
       type: String,
       trim: true,
+      lowercase: true,
       required: [true, 'Please enter the brand name of this product,']
     },
     desc: {
       type: String,
       trim: true,
+      lowercase: true,
       required: [
         true,
         'Please enter the name or item description of the product.'
@@ -91,14 +96,17 @@ const productSchema = new Schema(
     },
     color: {
       type: String,
+      lowercase: true,
       trim: true
     },
     style: {
       type: String,
+      lowercase: true,
       trim: true
     },
     size: {
       type: String,
+      lowercase: true,
       trim: true
     },
     qty: {
@@ -126,4 +134,8 @@ const productSchema = new Schema(
   }
 );
 
+productSchema.plugin(uniqueValidator, {
+  message:
+    'Oops, we already have a product with that UPC or Serial Number. Please confirm the number and re-enter.'
+});
 module.exports = mongoose.model('Product', productSchema);
