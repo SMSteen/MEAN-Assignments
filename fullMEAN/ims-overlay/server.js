@@ -14,6 +14,11 @@ require('./server/config/database');
 
 //serve angular files from 'dist' directory
 app.use(express.static(path.join(__dirname, '/dist/ims-overlay')));
+// serve product images from 'public/uploads' directory
+app.use(
+  '/public/uploads',
+  express.static(path.join(__dirname, '/public/uploads'))
+);
 
 //load and use routes file
 app.use('/api', require('./server/routes'));

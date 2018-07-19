@@ -1,6 +1,5 @@
-// let counter = 24;
 export class Product {
-  _id: number;
+  _id: string;
   upc: number; // ALL ITEMS - upc?
   dept: string; // ALL ITEMS
   category: string; // ALL ITEMS
@@ -13,15 +12,10 @@ export class Product {
   style: string; // not all items
   size: string; // not all items
   qty: number; // ALL ITEMS
-  image: string; // file upload; ALL ITEMS, not required
-
-  //   constructor() {
-  //     this._id = counter++;
-  //   }
+  image: string | any; // file upload; ALL ITEMS, not required
 }
 
 // things to add
 // serialnum: number;  not all items
-// category: string;  ALL ITEMS
 // archived??
 // seasonal??

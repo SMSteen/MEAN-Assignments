@@ -5,12 +5,7 @@ const upload = require('../controllers/upload');
 
 module.exports = router
   .get('/', productController.index)
-  // .post('/', productController.create)
-  .post('/', upload.single('image'), function(request, response) {
-    console.log('getting to controller');
-    console.log('file info', request.file);
-    console.log('form data', request.body);
-  })
+  .post('/', upload.single('image'), productController.create)
   .get('/:productID', productController.show)
-  .put('/:productID', productController.update)
+  .put('/:productID', upload.single('image'), productController.update)
   .delete('/:productID', productController.destroy);

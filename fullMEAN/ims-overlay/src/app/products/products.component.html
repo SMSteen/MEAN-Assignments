@@ -1,3 +1,3 @@
-<!-- <app-product-list [products]='products' (sendID)="onDelete($event)"></app-product-list> -->
+<app-product-list [products]='products' (sendID)="onDelete($event)" (sendCopy)="copy($event)"></app-product-list>
 <!-- .subscribe does not work when passing eventemitter as above -- get error ".subscribe" is not a function -->
-<app-product-list [products]='products'></app-product-list>
+<!-- <app-product-list [products]='products'></app-product-list> -->

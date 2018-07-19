@@ -105,8 +105,15 @@
 
   <div class="button-container">
     <button [disabled]=!productForm.valid (click)="onSubmit(productForm.value, $event)">{{ formType }}</button>
-    <a *ngIf="formType === 'Edit Product'" class="btn-primary" routerLink="/products/{{product?._id}}">Cancel</a>
-    <a *ngIf="formType === 'Add Product'" class="btn-primary" routerLink="/products">Cancel</a>
+    <button type="button" (click)="onCancel()">Cancel</button>
   </div>
 
 </form>
+
+<div *ngIf="formType === 'Edit Product'" class="visual-display">
+  <img *ngIf="!product.image || product.image === 'null'" src="/assets/no-image.jpg" alt="no image">
+  <img *ngIf="product.image" src="{{product.image}}" alt="{{product.item}}">
+  <!-- <button *ngIf="product.qty > 0" class="btn-primary" disabled>Remove Item</button> -->
+  <!-- <button *ngIf="!product.qty" class="btn-primary" (click)="onDelete(product._id)">Remove Item</button> -->
+  <button [disabled]="product.qty > 0" class="btn-delete" (click)="onDelete(products._id)">Remove Item</button>
+</div>

@@ -1,0 +1,26 @@
+.button-container {
+  padding: 1% 25%;
+}
+.button-container button {
+  display: inline-block;
+  margin: 0 10px;
+}
+.visual-display {
+  display: inline-block;
+  vertical-align: top;
+  width: 35%;
+  margin: 5% 0 0 5%;
+}
+img {
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+  /* vertical-align: top; */
+  padding: 20px;
+  border: 0.5px dotted #343a5c;
+  border-radius: 10px;
+}
+.visual-display button {
+  display: block;
+  margin: 10px auto;
+}
