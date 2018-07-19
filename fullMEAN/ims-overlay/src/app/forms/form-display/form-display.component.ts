@@ -1,7 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
+
+
 import { Product } from '../../product';
+import { combineLatest, of } from 'rxjs';
+import { map, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-form-display',
@@ -14,8 +18,7 @@ export class FormDisplayComponent implements OnInit {
   @Input() productForm: FormGroup;
   @Input() deptList: string[];
   @Input() catList: string[];
-  @Output() sendData = new EventEmitter();
-  @Output() sendFile = new EventEmitter();
+  @Output() sendData = new EventEmitter<Product>();
 
   fileToUpload: File = null;
 
@@ -24,12 +27,14 @@ export class FormDisplayComponent implements OnInit {
   ngOnInit() {}
 
   onFileChanged(event) {
+    console.log(event);
     this.fileToUpload = event.target.files[0];
     console.log('component - file entered', this.fileToUpload);
   }
 
   onSubmit(form: FormData, event: Event) {
     event.preventDefault();
+
 
     // form.append('myFile', fileInputElement.files[0]);  // this doesn't work, .append is not a "method" :(
     // console.log(formElement);
@@ -38,8 +43,20 @@ export class FormDisplayComponent implements OnInit {
       'in form-display.component --> form does not include file',
       form
     );
-    // How can these values be emitted TOGETHER?
-    this.sendFile.emit(this.fileToUpload);
-    this.sendData.emit(form);
+
+    const prod = { ...form, file: this.fileToUpload };
+
+    this.sendData.emit(prod as any);
+
+    // combineLatest(of(this.fileToUpload), of(form))
+    //   .pipe(map(([file, product]) => {
+    //     return { ...product, file } as any as Product;
+    //     }),
+    //     take(1)
+    //   )
+    //   .subscribe(product => {
+    //     console.log('product from combine', product);
+    //     this.sendData.emit(product);
+    //   });
   }
 }
