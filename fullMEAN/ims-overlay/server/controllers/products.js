@@ -9,9 +9,11 @@ module.exports = {
       .catch(console.log);
   },
   create(request, response) {
+    console.log('body', request.body, 'file', request.file);
     console.log('product-controller --> adding product to database');
     if (request.file) {
-      request.body.image = '/public/uploads/' + request.file.filename;
+      // request.body.image = '/public/uploads/' + request.file.filename;
+      console.log(request.file);
     }
     Product.create(request.body)
       .then(product => {

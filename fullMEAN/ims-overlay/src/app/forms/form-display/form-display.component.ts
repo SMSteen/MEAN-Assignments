@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { combineLatest, of } from 'rxjs';
 import { map, take } from 'rxjs/operators';
@@ -21,7 +22,7 @@ export class FormDisplayComponent implements OnInit {
 
   fileToUpload: File = null;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
 
@@ -47,5 +48,11 @@ export class FormDisplayComponent implements OnInit {
         console.log('product from combine', product);
         this.sendData.emit(product);
       });
+  }
+
+  onCancel() {
+    this.formType === 'Edit Product'
+      ? this.router.navigateByUrl(`/products/${this.product._id}`)
+      : this.router.navigateByUrl('/products');
   }
 }

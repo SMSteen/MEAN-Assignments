@@ -19,15 +19,19 @@ export class ProductDataService {
 
   addProduct(newProd: Product): Observable<Product> {
     console.log('adding a product in service:', newProd);
-    const formData: FormData = new FormData();
+
+    // currently without using FormData, file is not attached to request; file never makes it to line 8 of server/product.routes.js
+    // below code (formData.append) does work
+    // const formData: FormData = new FormData();
     // append form input values to FormData for backend use with multer
-    for (const field in newProd) {
-      if (newProd.hasOwnProperty(field)) {
-        formData.append(field, newProd[field]);
-      }
-    }
-    console.log(formData);
-    return this.http.post<Product>(this.baseURL, formData);
+    // for (const field in newProd) {
+    //   if (newProd.hasOwnProperty(field)) {
+    //     formData.append(field, newProd[field]);
+    //   }
+    // }
+    // console.log(formData);
+
+    return this.http.post<Product>(this.baseURL, newProd);
   }
 
   getProduct(prod_id): Observable<Product> {

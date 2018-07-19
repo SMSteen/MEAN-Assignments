@@ -14,7 +14,7 @@
       <!-- <a routerLink="/new'" class="btn-primary">Copy</a> -->
       <a [routerLink]="[product._id, 'copy']" class="btn btn-copy">Copy</a>
       <!-- <button class="btn btn-copy" (click)="copy(products[0])">Copy</button> -->
-      <button [disabled]="product.qty > 0" class="btn-delete" (click)="onDelete(products[0]._id)">Remove Item</button>
+      <button [disabled]="product.qty > 0" class="btn-delete" (click)="onDelete(product._id)">Remove Item</button>
     </div>
   </div>
 </div>

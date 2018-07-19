@@ -125,8 +125,8 @@ const productSchema = new Schema(
       }
     },
     image: {
-      type: String,
-      trim: true
+      type: Buffer
+      // trim: true
     }
   },
   {

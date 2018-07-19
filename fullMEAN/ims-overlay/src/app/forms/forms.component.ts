@@ -92,30 +92,28 @@ export class FormsComponent implements OnInit {
               product
             );
             if (url[1].path !== 'copy') {
-              console.log(url);
+              // console.log(url);
               console.log('editing existing product');
               // editing an existing product;
               this.formType = 'Edit Product';
               this.product = product;
-              this.product.image = '';
-              this.productForm.patchValue(this.product); // populate form with existing data
+
+              // cannot populate input file field with url or string. if set to null, no error, but removes img tied to product
+              // this.product.image = '';
+
+              // populate form with existing data
+              this.productForm.patchValue(this.product);
             } else {
               // adding a new product but copying some fields from existing product
               this.copy = true;
               this.formType = 'Add Product';
-              this.product = new Product();
-              // collect values desired for copy
-              this.product.brand = product.brand;
-              this.product.category = product.category;
-              this.product.color = product.color;
-              this.product.cost = product.cost;
-              this.product.dept = product.dept;
-              this.product.desc = product.desc;
-              this.product.price = product.price;
-              this.product.size = product.size;
-              this.product.style = product.style;
-              this.product.suggestedRetail = product.suggestedRetail;
-              this.productForm.patchValue(this.product); // populate form with existing data
+              this.product = product;
+              // remove the old _id, upc, size as these will be different
+              delete this.product._id;
+              delete this.product.upc;
+              delete this.product.size;
+              // populate form with the data
+              this.productForm.patchValue(this.product);
             }
           },
           error => {
@@ -129,7 +127,7 @@ export class FormsComponent implements OnInit {
 
   submit(formData) {
     console.log('in form.component --> formData', formData);
-    const cleanData = Object.assign({}, this.product, formData);
+    const cleanData = { ...this.product, ...formData };
     console.log('form.component cleanData', cleanData);
     console.log(this.formType);
     if (this.formType === 'Add Product') {
