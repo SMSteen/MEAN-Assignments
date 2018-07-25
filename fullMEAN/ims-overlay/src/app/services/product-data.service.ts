@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 import { Product } from '../product';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,23 +16,12 @@ export class ProductDataService {
 
   getProducts(): Observable<Product[]> {
     console.log('getting all products in service');
-    return this.http.get<Product[]>(this.baseURL);
+    return this.http.get<Product[]>(this.baseURL)
+      .pipe(tap(products => products.forEach(product => console.log('got product ==> ', product))))
   }
 
   addProduct(newProd: Product): Observable<Product> {
     console.log('adding a product in service:', newProd);
-
-    // currently without using FormData, file is not attached to request; file never makes it to line 8 of server/product.routes.js
-    // below code (formData.append) does work
-    // const formData: FormData = new FormData();
-    // append form input values to FormData for backend use with multer
-    // for (const field in newProd) {
-    //   if (newProd.hasOwnProperty(field)) {
-    //     formData.append(field, newProd[field]);
-    //   }
-    // }
-    // console.log(formData);
-
     return this.http.post<Product>(this.baseURL, newProd);
   }
 

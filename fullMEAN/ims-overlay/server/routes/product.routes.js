@@ -8,4 +8,5 @@ module.exports = router
   .post('/', upload.single('image'), productController.create)
   .get('/:productID', productController.show)
   .put('/:productID', upload.single('image'), productController.update)
+  .get('/:productID/images', productController.productImage)
   .delete('/:productID', productController.destroy);

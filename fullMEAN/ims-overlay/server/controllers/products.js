@@ -1,5 +1,7 @@
 const Product = require('mongoose').model('Product');
 const upload = require('../controllers/upload');
+const fs = require('fs');
+
 
 module.exports = {
   index(request, response) {
@@ -9,13 +11,27 @@ module.exports = {
       .catch(console.log);
   },
   create(request, response) {
-    console.log('body', request.body, 'file', request.file);
+    const { body: product, file } = request;
+
+    console.log('body', product, 'file', file);
     console.log('product-controller --> adding product to database');
-    if (request.file) {
-      // request.body.image = '/public/uploads/' + request.file.filename;
-      console.log(request.file);
+
+    try {
+      const { path: filePath, mimetype: contentType } = file;
+      const fileContent = {
+        data: fs.readFileSync(filePath),
+        contentType,
+      };
+
+      console.log('file ', fileContent);
+
+      product.image = fileContent;
+
+    } catch (e) {
+      delete product.image;
     }
-    Product.create(request.body)
+
+    Product.create(product)
       .then(product => {
         console.log(
           'product-controller --> product successfully created',
@@ -37,6 +53,18 @@ module.exports = {
     console.log('product-controller --> getting one product from database');
     Product.findById(request.params.productID)
       .then(product => response.json(product))
+      .catch(console.log);
+  },
+
+  productImage(request, response) {
+    console.log('requesting image');
+    Product.findById(request.params.productID)
+      .then(product => {
+        const { data: buffer, contentType: type } = product.image;
+
+        response.writeHead(200, { 'Content-Type': type });
+        response.end(buffer, 'binary');
+      })
       .catch(console.log);
   },
 

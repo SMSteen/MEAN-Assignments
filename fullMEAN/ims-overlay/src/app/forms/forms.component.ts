@@ -127,11 +127,10 @@ export class FormsComponent implements OnInit {
 
   submit(formData) {
     console.log('in form.component --> formData', formData);
-    const cleanData = { ...this.product, ...formData };
-    console.log('form.component cleanData', cleanData);
+
     console.log(this.formType);
     if (this.formType === 'Add Product') {
-      this.prodService.addProduct(cleanData).subscribe(
+      this.prodService.addProduct(formData).subscribe(
         newProduct => {
           console.log(
             'form.component --> successfully added product',
@@ -146,7 +145,7 @@ export class FormsComponent implements OnInit {
         }
       );
     } else {
-      this.prodService.updateProduct(cleanData).subscribe(
+      this.prodService.updateProduct(formData).subscribe(
         updatedProduct => {
           console.log(
             'form.component component --> successfully updated product',

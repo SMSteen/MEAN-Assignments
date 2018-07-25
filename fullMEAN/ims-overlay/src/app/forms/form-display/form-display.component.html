@@ -100,11 +100,11 @@
 
   <div>
     <label for="image">Upload Image</label>
-    <input type="file" (change)="onFileChanged($event)" formControlName="image">
+    <input type="file" (change)="onFileChanged($event)">
   </div>
 
   <div class="button-container">
-    <button [disabled]=!productForm.valid (click)="onSubmit(productForm.value, $event)">{{ formType }}</button>
+    <button [disabled]=!productForm.valid (click)="onSubmit(productForm, $event)">{{ formType }}</button>
     <button type="button" (click)="onCancel()">Cancel</button>
   </div>
 
