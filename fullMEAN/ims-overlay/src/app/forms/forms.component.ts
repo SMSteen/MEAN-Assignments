@@ -92,14 +92,10 @@ export class FormsComponent implements OnInit {
               product
             );
             if (url[1].path !== 'copy') {
-              // console.log(url);
               console.log('editing existing product');
               // editing an existing product;
               this.formType = 'Edit Product';
               this.product = product;
-
-              // cannot populate input file field with url or string. if set to null, no error, but removes img tied to product
-              // this.product.image = '';
 
               // populate form with existing data
               this.productForm.patchValue(this.product);
