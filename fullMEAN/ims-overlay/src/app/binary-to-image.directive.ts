@@ -1,28 +1,34 @@
-import { Directive, OnInit, HostBinding, Input } from '@angular/core';
+import { Directive, OnInit, HostBinding, Input, Host } from '@angular/core';
 
 @Directive({
-  /* tslint:disable-next-line:directive-selector */
-  selector: '[binaryToImage]'
+  selector: '[appBinaryToImage]'
 })
 export class BinaryToImageDirective implements OnInit {
   @HostBinding()
-  @Input() src: string | ImageBuffer;
+  @Input()
+  src: string | ImageBuffer;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
+    // if there's no image stored, exit method
     if (typeof this.src === 'string') {
       return;
     }
 
+    // image stored, get the data
     const { data: buffer, contentType } = this.src;
 
-    const base64 = btoa(buffer.data.reduce((memo, code) => memo + String.fromCharCode(code), ''));
+    // convert buffer.data array to single string value, then encode to base64 for display
+    const base64 = btoa(
+      buffer.data.reduce((memo, code) => memo + String.fromCharCode(code), '')
+    );
 
     this.src = `data:${contentType};base64,${base64}`;
   }
 }
 
+// interface for image data returned from api
 interface ImageBuffer {
   data: {
     data: Array<number>;

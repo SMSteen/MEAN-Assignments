@@ -128,6 +128,7 @@ const productSchema = new Schema(
       data: Buffer,
       contentType: String
     }
+    // image: String
   },
   {
     timestamps: true

@@ -2,7 +2,6 @@ const Product = require('mongoose').model('Product');
 const upload = require('../controllers/upload');
 const fs = require('fs');
 
-
 module.exports = {
   index(request, response) {
     Product.find({})
@@ -11,27 +10,21 @@ module.exports = {
       .catch(console.log);
   },
   create(request, response) {
-    const { body: product, file } = request;
-
-    console.log('body', product, 'file', file);
     console.log('product-controller --> adding product to database');
+    const { body: product, file } = request;
 
     try {
       const { path: filePath, mimetype: contentType } = file;
       const fileContent = {
         data: fs.readFileSync(filePath),
-        contentType,
+        contentType
       };
-
-      console.log('file ', fileContent);
-
       product.image = fileContent;
-
     } catch (e) {
       delete product.image;
     }
 
-    Product.create(product)
+    Product.create(request.body)
       .then(product => {
         console.log(
           'product-controller --> product successfully created',
@@ -70,10 +63,19 @@ module.exports = {
 
   update(request, response) {
     console.log('product-controller --> updating product in database');
-    if (request.file) {
-      ('product-controller, got an image');
-      request.body.image = '/public/uploads/' + request.file.filename;
+    const { body: product, file } = request;
+
+    try {
+      const { path: filePath, mimetype: contentType } = file;
+      const fileContent = {
+        data: fs.readFileSync(filePath),
+        contentType
+      };
+      product.image = fileContent;
+    } catch (e) {
+      delete product.image;
     }
+
     Product.findByIdAndUpdate(request.params.productID, request.body, {
       new: true
     })

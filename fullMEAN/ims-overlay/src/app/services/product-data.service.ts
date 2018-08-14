@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 
 import { Product } from '../product';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -16,12 +15,18 @@ export class ProductDataService {
 
   getProducts(): Observable<Product[]> {
     console.log('getting all products in service');
-    return this.http.get<Product[]>(this.baseURL)
-      .pipe(tap(products => products.forEach(product => console.log('got product ==> ', product))))
+    return this.http
+      .get<Product[]>(this.baseURL)
+      .pipe(
+        tap(products =>
+          products.forEach(product => console.log('got product ==> ', product))
+        )
+      );
   }
 
-  addProduct(newProd: Product): Observable<Product> {
-    console.log('adding a product in service:', newProd);
+  // addProduct(newProd: Product): Observable<Product> {
+  addProduct(newProd): Observable<Product> {
+    console.log('adding a product in service');
     return this.http.post<Product>(this.baseURL, newProd);
   }
 
@@ -30,17 +35,9 @@ export class ProductDataService {
     return this.http.get<Product>(this.baseURL + prod_id);
   }
 
-  updateProduct(product): Observable<Product> {
-    const formData: FormData = new FormData();
-    // append form input values to FormData for backend use with multer
-    for (const field in product) {
-      if (product.hasOwnProperty(field)) {
-        console.log('field name', field, 'field value', product[field]);
-        formData.append(field, product[field]);
-      }
-    }
-    console.log('updating a product in service', product._id);
-    return this.http.put<Product>(this.baseURL + product._id, formData);
+  updateProduct(product, prod_id): Observable<Product> {
+    console.log('updating a product in service', prod_id);
+    return this.http.put<Product>(this.baseURL + prod_id, product);
   }
 
   deleteProduct(prod_id): Observable<Product> {

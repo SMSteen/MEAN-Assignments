@@ -2,9 +2,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, NgForm } from '@angular/forms';
 
-import { combineLatest, of } from 'rxjs';
-import { map, take } from 'rxjs/operators';
-
 import { Product } from '../../product';
 
 @Component({
@@ -13,12 +10,18 @@ import { Product } from '../../product';
   styleUrls: ['./form-display.component.css']
 })
 export class FormDisplayComponent implements OnInit {
-  @Input() product: Product;
-  @Input() formType: string;
-  @Input() productForm: FormGroup;
-  @Input() deptList: string[];
-  @Input() catList: string[];
-  @Output() sendData = new EventEmitter<Product>();
+  @Input()
+  product: Product;
+  @Input()
+  formType: string;
+  @Input()
+  productForm: FormGroup;
+  @Input()
+  deptList: string[];
+  @Input()
+  catList: string[];
+  @Output()
+  sendData = new EventEmitter<Product>();
 
   fileToUpload: File = null;
 
@@ -27,49 +30,31 @@ export class FormDisplayComponent implements OnInit {
   ngOnInit() {}
 
   onFileChanged(event) {
+    // if a file has been uploaded, capture data
     if (event.target.files.length) {
-      const file: File = event.target.files[0];
-      this.productForm.get('image').setValue(file);
+      console.log('form.display component - file entered');
+      this.productForm.get('image').setValue(event.target.files[0]);
     }
-    // console.log(event);
-    // this.fileToUpload = event.target.files[0];
-    // console.log('component - file entered', this.fileToUpload);
   }
 
   onSubmit(form: NgForm, event: Event) {
     event.preventDefault();
+    console.log(
+      'form-display component Form data submitted by user',
+      form.value
+    );
 
+    // append form input values to FormData for backend use with multer
     const formData = new FormData();
-
-    Object.keys(form.controls)
-      .forEach(key => {
-        console.log('getting value', this.productForm.get(key).value);
-        formData.append(key, this.productForm.get(key).value);
-      });
+    Object.keys(form.controls).forEach(key => {
+      // console.log(key, '-->getting value', this.productForm.get(key).value);
+      formData.append(key, this.productForm.get(key).value);
+    });
 
     console.log('formdata', formData.has('image'));
-    // this.productForm.controls.entries(([control: string, __]) => {
-    //   // formData.append(control, this.productForm.get(control));
-    //   conosole.lof
-    // })
 
-
-
+    // emit to parent
     this.sendData.emit(formData as any);
-    // convert last values of file and formdata to observable
-    // combineLatest(of(this.fileToUpload), of(form))
-    //   // map observable created above into Product class
-    //   .pipe(
-    //     map(([image, product]) => {
-    //       return ({ ...product, image } as any) as Product;
-    //     }),
-    //     take(1)
-    //   )
-    //   // subscribe to final result (product) and emit to parent
-    //   .subscribe(product => {
-    //     console.log('product from combine', product);
-    //     this.sendData.emit(product);
-    //   });
   }
 
   onCancel() {

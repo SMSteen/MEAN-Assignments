@@ -112,8 +112,6 @@
 
 <div *ngIf="formType === 'Edit Product'" class="visual-display">
   <img *ngIf="!product.image || product.image === 'null'" src="/assets/no-image.jpg" alt="no image">
-  <img *ngIf="product.image" src="{{product.image}}" alt="{{product.item}}">
-  <!-- <button *ngIf="product.qty > 0" class="btn-primary" disabled>Remove Item</button> -->
-  <!-- <button *ngIf="!product.qty" class="btn-primary" (click)="onDelete(product._id)">Remove Item</button> -->
+  <img *ngIf="product.image" [src]="product.image" [alt]="product.item" appBinaryToImage>
   <button [disabled]="product.qty > 0" class="btn-delete" (click)="onDelete(products._id)">Remove Item</button>
 </div>
