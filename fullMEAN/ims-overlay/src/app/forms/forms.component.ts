@@ -104,10 +104,11 @@ export class FormsComponent implements OnInit {
               this.copy = true;
               this.formType = 'Add Product';
               this.product = product;
-              // remove the old _id, upc, size as these will be different
+              // remove the old _id, upc, size, qty as these will be different
               delete this.product._id;
               delete this.product.upc;
               delete this.product.size;
+              delete this.product.qty;
               // populate form with the data
               this.productForm.patchValue(this.product);
             }
@@ -122,12 +123,11 @@ export class FormsComponent implements OnInit {
   }
 
   submit(formData) {
-    console.log('in form.component --> formData', formData);
-    const cleanData = { ...this.product, ...formData };
-    console.log('form.component cleanData', cleanData);
     console.log(this.formType);
+    console.log('formdata', formData.has('image'));
+
     if (this.formType === 'Add Product') {
-      this.prodService.addProduct(cleanData).subscribe(
+      this.prodService.addProduct(formData).subscribe(
         newProduct => {
           console.log(
             'form.component --> successfully added product',
@@ -142,7 +142,7 @@ export class FormsComponent implements OnInit {
         }
       );
     } else {
-      this.prodService.updateProduct(cleanData).subscribe(
+      this.prodService.updateProduct(formData, this.product._id).subscribe(
         updatedProduct => {
           console.log(
             'form.component component --> successfully updated product',

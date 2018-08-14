@@ -104,7 +104,7 @@
   </div>
 
   <div class="button-container">
-    <button [disabled]=!productForm.valid (click)="onSubmit(productForm.value, $event)">{{ formType }}</button>
+    <button [disabled]=!productForm.valid (click)="onSubmit(productForm, $event)">{{ formType }}</button>
     <button type="button" (click)="onCancel()">Cancel</button>
   </div>
 
@@ -112,6 +112,6 @@
 
 <div *ngIf="formType === 'Edit Product'" class="visual-display">
   <img *ngIf="!product.image || product.image === 'null'" src="/assets/no-image.jpg" alt="no image">
-  <img *ngIf="product.image" src="/ims-overlay/public/uploads/{{product.image}}" alt="{{product.item}}">
+  <img *ngIf="product.image" [src]="product.image" [alt]="product.item" appBinaryToImage>
   <button [disabled]="product.qty > 0" class="btn-delete" (click)="onDelete(products._id)">Remove Item</button>
 </div>

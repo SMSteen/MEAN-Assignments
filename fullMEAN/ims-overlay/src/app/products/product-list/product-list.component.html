@@ -4,16 +4,16 @@
   <div class="row">
     <div *ngFor="let product of products" class="col-3 product">
       <img *ngIf="!product.image || product.image === 'null'" src="/assets/no-image.jpg" alt="no-image">
-      <img *ngIf="product.image" src="{{product.image}}" alt="{{product.item}}">
+      <img *ngIf="product.image" [src]="product.image" [alt]="product.desc" appBinaryToImage>
       <h2>{{ product.brand | titlecase }}</h2>
       <h1>{{ product.desc | titlecase }}</h1>
       <h1>{{ product.price | currency }}</h1>
-      <h3>Size: {{ product.size | uppercase }}
-        <span class="spacer">|</span>Qty: {{ product.qty }}</h3>
+      <h3>
+        Size: {{ product.size | uppercase }}
+        <span class="spacer">|</span>Qty: {{ product.qty }}
+      </h3>
       <a [routerLink]="[product._id, 'edit']" class="btn">Edit</a>
-      <!-- <a routerLink="/new'" class="btn-primary">Copy</a> -->
       <a [routerLink]="[product._id, 'copy']" class="btn btn-copy">Copy</a>
-      <!-- <button class="btn btn-copy" (click)="copy(products[0])">Copy</button> -->
       <button [disabled]="product.qty > 0" class="btn-delete" (click)="onDelete(product._id)">Remove Item</button>
     </div>
   </div>

@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { ProductDataService } from './services/product-data.service';
+import { BinaryToImageDirective } from './binary-to-image.directive';
 
 import { AppComponent } from './app.component';
 import { FormsComponent } from './forms/forms.component';
@@ -22,7 +23,8 @@ import { ProductsComponent } from './products/products.component';
     HomeComponent,
     ProductListComponent,
     ProductDetailsComponent,
-    ProductsComponent
+    ProductsComponent,
+    BinaryToImageDirective
   ],
   imports: [
     BrowserModule,
