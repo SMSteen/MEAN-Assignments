@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 import { Product } from '../product';
@@ -14,7 +15,13 @@ export class ProductDataService {
 
   getProducts(): Observable<Product[]> {
     console.log('getting all products in service');
-    return this.http.get<Product[]>(this.baseURL);
+    return this.http
+      .get<Product[]>(this.baseURL)
+      .pipe(
+        tap(products =>
+          products.forEach(product => console.log('got product ==> ', product))
+        )
+      );
   }
 
   // addProduct(newProd: Product): Observable<Product> {

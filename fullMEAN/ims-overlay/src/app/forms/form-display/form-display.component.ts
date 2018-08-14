@@ -20,10 +20,10 @@ export class FormDisplayComponent implements OnInit {
   deptList: string[];
   @Input()
   catList: string[];
-  // @Output() sendData = new EventEmitter();
-  // @Output() sendFile = new EventEmitter();
   @Output()
   sendData = new EventEmitter<Product>();
+
+  fileToUpload: File = null;
 
   constructor(private router: Router) {}
 

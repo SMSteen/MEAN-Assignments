@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -6,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class DataService {
   numbersAlpha: number[] = [];
   numbersBeta: number[] = [];
+  difference$: BehaviorSubject<number> = new BehaviorSubject(0);
 
   constructor() { }
 

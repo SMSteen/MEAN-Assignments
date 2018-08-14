@@ -49,6 +49,18 @@ module.exports = {
       .catch(console.log);
   },
 
+  productImage(request, response) {
+    console.log('requesting image');
+    Product.findById(request.params.productID)
+      .then(product => {
+        const { data: buffer, contentType: type } = product.image;
+
+        response.writeHead(200, { 'Content-Type': type });
+        response.end(buffer, 'binary');
+      })
+      .catch(console.log);
+  },
+
   update(request, response) {
     console.log('product-controller --> updating product in database');
     const { body: product, file } = request;
