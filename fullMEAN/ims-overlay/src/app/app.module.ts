@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { ProductDataService } from './services/product-data.service';
+import { ProductResolver } from './services/product.resolver';
 import { BinaryToImageDirective } from './binary-to-image.directive';
 
 import { AppComponent } from './app.component';
@@ -14,7 +15,6 @@ import { HomeComponent } from './home/home.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
 import { ProductsComponent } from './products/products.component';
-import { BinaryToImageDirective } from './binary-to-image.directive';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,7 @@ import { BinaryToImageDirective } from './binary-to-image.directive';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [ProductDataService],
+  providers: [ProductDataService, ProductResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

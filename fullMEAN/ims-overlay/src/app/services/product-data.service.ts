@@ -24,7 +24,6 @@ export class ProductDataService {
       );
   }
 
-  // addProduct(newProd: Product): Observable<Product> {
   addProduct(newProd): Observable<Product> {
     console.log('adding a product in service');
     return this.http.post<Product>(this.baseURL, newProd);

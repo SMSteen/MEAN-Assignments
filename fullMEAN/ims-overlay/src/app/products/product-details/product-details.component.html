@@ -1,3 +1,62 @@
-<p>
-  product-details works!
-</p>
+<div class="product">
+  <h1>
+    {{ product.brand | titlecase }}
+  </h1>
+  <h1>
+    {{ product.desc | titlecase }}
+  </h1>
+  <img *ngIf="!product.image || product.image === 'null'" src="/assets/no-image.jpg" alt="no image">
+  <img *ngIf="product.image" [src]="product.image" [alt]="product.item" appBinaryToImage>
+
+  <div class="prod-details">
+    <ul>
+      <li>
+        Department:
+        <span class="spacer">{{ product.dept }}</span>
+      </li>
+      <li>
+        Category:
+        <span class="spacer">{{ product.category }}</span>
+      </li>
+      <li>
+        UPC:
+        <span class="spacer">{{ product.upc }}</span>
+      </li>
+      <li>
+        Cost:
+        <span class="spacer">{{ product.cost }}</span>
+      </li>
+      <li>
+        Price:
+        <span class="spacer">{{ product.price }}</span>
+      </li>
+      <li *ngIf="product.suggestedRetail > '0'">
+        Retail Price:
+        <span class="spacer">{{ product.suggestedRetail }}</span>
+      </li>
+      <li>
+        Size:
+        <span class="spacer">{{ product.size }}</span>
+      </li>
+      <li>
+        Color:
+        <span class="spacer">{{ product.color }}</span>
+      </li>
+      <li>
+        Style:
+        <span class="spacer">{{ product.style }}</span>
+      </li>
+      <li>
+        Quantity:
+        <span class="spacer">{{ product.qty }}</span>
+      </li>
+    </ul>
+
+  </div>
+
+  <div class="button-container">
+    <a [routerLink]="[product._id, 'edit']" class="btn">Edit</a>
+    <a [routerLink]="[product._id, 'copy']" class="btn btn-copy">Copy</a>
+    <button [disabled]="product.qty > 0" class="btn-delete" (click)="onDelete(product._id)">Remove Item</button>
+  </div>
+</div>

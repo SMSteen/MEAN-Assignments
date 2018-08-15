@@ -1,0 +1,101 @@
+.product {
+  width: 60%;
+}
+.button-container {
+  padding: 1% 25%;
+}
+.button-container button {
+  display: inline-block;
+  margin: 0 10px;
+}
+h1 {
+  color: #535c93;
+  margin: 0;
+  text-align: center;
+}
+.product h1:nth-of-type(1) {
+  font-size: 1.8em;
+}
+img {
+  display: inline-block;
+  width: 25%;
+  margin: 10px;
+  padding: 20px;
+  border: 0.5px dotted #343a5c;
+  border-radius: 10px;
+}
+.prod-details {
+  display: inline-block;
+  width: 60%;
+  vertical-align: top;
+}
+ul {
+  padding: 0;
+}
+ul li {
+  list-style-type: none;
+  margin: 5px 0;
+}
+.spacer {
+  margin: 20px;
+  font-style: italic;
+  font-weight: bold;
+  color: #343a5c;
+}
+/* @media only screen and (max-width: 1024px) {
+    .product {
+      width: 45%;
+    }
+  } */
+@media only screen and (max-width: 758px) {
+  .product {
+    width: 90%;
+  }
+  img,
+  .prod-details {
+    display: block;
+    margin: 10px;
+  }
+  .prod-details {
+    width: 100%;
+  }
+  h1 {
+    text-align: left;
+    margin: 10px;
+  }
+}
+
+a.btn,
+.btn-delete,
+.btn-copy {
+  display: block;
+  margin: 10px auto;
+  width: 47%;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: buttonface;
+  border: 2px solid #004d1a;
+  color: #004d1a;
+  font-weight: bold;
+  font-size: 1.3em;
+  box-shadow: 2px 2px 2px #808080;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-delete,
+.btn-copy {
+  font-size: 1.2em;
+  padding: 7px;
+  width: 50%;
+}
+.btn-delete {
+  color: #990000;
+  border-color: #990000;
+}
+a.btn-copy {
+  color: #343a5c;
+  border-color: #343a5c;
+}
+button:disabled {
+  cursor: default;
+}

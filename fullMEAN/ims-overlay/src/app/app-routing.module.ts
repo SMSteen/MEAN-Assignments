@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ProductResolver } from './services/product.resolver';
+
 import { HomeComponent } from './home/home.component';
-import { ProductListComponent } from './products/product-list/product-list.component';
 import { FormsComponent } from './forms/forms.component';
-import { ProductDetailsComponent } from './products/product-details/product-details.component';
 import { ProductsComponent } from './products/products.component';
+import { ProductListComponent } from './products/product-list/product-list.component';
+import { ProductDetailsComponent } from './products/product-details/product-details.component';
 
 const routes: Routes = [
   {
@@ -28,7 +30,10 @@ const routes: Routes = [
       {
         path: ':id',
         component: ProductDetailsComponent,
-        pathMatch: 'full'
+        pathMatch: 'full',
+        resolve: {
+          product: ProductResolver
+        }
       },
       {
         path: ':id/edit',
